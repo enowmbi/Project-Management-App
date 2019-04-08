@@ -10,6 +10,45 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <%= link_to("<h1>Issues Tracker</h1>".html_safe,root_path,class:"navbar-brand") %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item active">
+              <a class="nav-link" href="#"><h5>Projects</h5></a>
+            </li>
+            <li class="nav-item" >
+              <a class="nav-link" href="#"><h5>Issues</h5></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><h5>Employees</h5></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><h5>User Accounts</h5></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><h5>Sign in</h5></a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="#"><h5>Sign up</h5></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <div class="container">
+        <%= yield %>
+    </section>
+    <footer>
+      <p class:"text-center">
+      &copy; 2019, Enow Mbi
+      </p>
+      </footer>
   </body>
 </html>
