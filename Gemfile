@@ -41,6 +41,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   #Add rspec 
   gem 'rspec-rails'
+  #Add simplecov for code coverage
+  gem 'simplecov', require:false
 
 end
 
