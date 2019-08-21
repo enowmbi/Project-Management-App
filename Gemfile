@@ -46,6 +46,8 @@ gem 'popper_js'
 gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'nokogiri','>=1.10.4'
+gem 'travis'
+gem 'coveralls', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
