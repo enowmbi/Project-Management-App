@@ -26,16 +26,10 @@ RSpec.describe "Home", type: :feature do
       end
     end 
 
-    it "has employees link" do 
-      within("nav") do 
-        expect(page).to have_link("Employees",href: employees_path)
-      end
 
-    end
-
-    it "has user accounts link" do 
+    it "has user profile link after successful sign in" do 
       within("nav") do 
-        expect(page).to have_link("User Accounts",href: accounts_path)
+        expect(page).to have_link("Profile",href: user_path(1))
       end
     end
 
@@ -50,6 +44,13 @@ RSpec.describe "Home", type: :feature do
         expect(page).to have_link("Sign up")
       end
     end
+
+    it "has signout link after successful sign in" do 
+       within("nav") do 
+         expect(page).to have_link("Sign Out")
+       end
+    end
+
   end
 
   context "main section" do 
