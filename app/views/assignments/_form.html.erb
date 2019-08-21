@@ -1,0 +1,52 @@
+<%= form_with(model: assignment, local: true) do |form| %>
+  <% if assignment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
+
+      <ul>
+        <% assignment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= form.label :user_id %>
+          <%= form.select(:user_id,User.all.map{|u|[u.full_name,u.id]},{},({class:"form-control"})) %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= form.label :issue_id %>
+          <%= form.select(:issue_id,Issue.all.map{|i|[(i.title + "  (" + i.project.name + ")"),i.id]},{},({class:"form-control"})) %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= form.label :assigned_on %>
+          <%= form.date_select :assigned_on,class:"form-control" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= form.label :resolved_on %>
+          <%= form.date_select :resolved_on %>
+        </div>
+      </div>
+      </div>
+      <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= form.label :status %>
+          <%= form.select(:status,["Pending","Resolved"].map{|u|[u]},{},({class:"form-control"})) %>
+        </div>
+      </div>
+      </div>
+      <div class="text-center">
+        <%= form.submit class:"btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>

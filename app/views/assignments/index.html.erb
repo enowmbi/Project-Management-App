@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Assignments</h1>
+
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Issue</th>
+      <th>Assigned on</th>
+      <th>Status</th>
+      <th>Resolved on</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assignments.each do |assignment| %>
+      <tr>
+        <td><%= assignment.user.full_name %></td>
+        <td><%= assignment.issue.title %></td>
+        <td><%= assignment.assigned_on %></td>
+        <td><%= assignment.status %></td>
+        <td><%= assignment.resolved_on %></td>
+        <td><%= link_to 'Show', assignment,class:"btn btn-primary btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_assignment_path(assignment),class:"btn btn-primary btn-sm" %></td>
+        <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger btn-sm" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Assignment', new_assignment_path,class:"btn btn-primary" %>
