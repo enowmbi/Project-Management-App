@@ -42,6 +42,10 @@ gem 'jquery-rails'
 gem 'font-awesome-sass'
 gem 'popper_js'
 
+#Add devise for authentication
+gem 'devise'
+gem 'devise-bootstrap-views', '~> 1.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -49,6 +53,11 @@ group :development, :test do
   gem 'rspec-rails'
   #Add simplecov for code coverage
   gem 'simplecov', require:false
+
+  #Add factory_bot 
+  gem 'factory_bot_rails'
+  #Add spec_writer
+  gem 'spec_writer'
 
 end
 
