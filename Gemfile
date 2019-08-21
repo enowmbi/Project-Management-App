@@ -37,7 +37,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 #Add gems for bootstrap and jquery 
-gem 'bootstrap','~>4.1.0'
+gem 'bootstrap','>=4.3.1'
 gem 'jquery-rails'
 gem 'font-awesome-sass'
 gem 'popper_js'
@@ -45,6 +45,7 @@ gem 'popper_js'
 #Add devise for authentication
 gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
+gem 'nokogiri','>=1.10.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
