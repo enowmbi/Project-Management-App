@@ -27,7 +27,7 @@ RSpec.describe "Home", type: :feature do
     end 
 
 
-    it "has user profile link after successful sign in" do 
+    xit "has user profile link after successful sign in" do 
       within("nav") do 
         expect(page).to have_link("Profile",href: user_path(1))
       end
@@ -45,7 +45,7 @@ RSpec.describe "Home", type: :feature do
       end
     end
 
-    it "has signout link after successful sign in" do 
+    xit "has signout link after successful sign in" do 
        within("nav") do 
          expect(page).to have_link("Sign Out")
        end
