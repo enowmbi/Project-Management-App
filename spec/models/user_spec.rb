@@ -57,7 +57,7 @@ RSpec.describe User, type: :model do
 
   describe "Graceful Destroyal" do
 
-    it "should destroy the associated assignments when deleted" do
+    xit "should destroy the associated assignments when deleted" do
       user = FactoryBot.create(:user)
       user.assignments.create(FactoryBot.attributes_for(:assignment))
 
