@@ -40,21 +40,25 @@ RSpec.describe "Projects", type: :request do
 
   end
 
-  xdescribe "POST /projects" do 
+  describe "POST /projects" do 
   
     describe "with valid params" do
 
-    it "returns http status of created" do 
-      project = FactoryBot.build(:project)
-      post '/projects',params: project
-      expect(response).to have_http_status(201)
+    it "increases the number of projects" do 
+      project_attributes = FactoryBot.attributes_for(:project)
+
+      expect{post "/projects", params:{project: project_attributes}}.to change(Project, :count).by(1)
       expect(response.content_type).to eq(Mime[:html])
     end
 
-    it "returns the last room category created"
-       pending
-    end
 
+    it "redirects to the last project created" do 
+      project_attributes = FactoryBot.attributes_for(:project)
+      post "/projects", params:{project: project_attributes}
+      expect(response).to have_http_status(302)
+      # expect(response).to redirect_to projects_path(Project.last)
+    end
+    end
     describe "with invalid params" do 
      pending
     end
