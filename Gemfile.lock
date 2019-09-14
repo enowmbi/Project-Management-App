@@ -294,7 +294,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.2)
   coveralls
-  devise
+  devise (>= 4.7.1)
   devise-bootstrap-views (~> 1.0)
   factory_bot_rails
   font-awesome-sass

@@ -43,7 +43,7 @@ gem 'font-awesome-sass'
 gem 'popper_js'
 
 #Add devise for authentication
-gem 'devise'
+gem 'devise','>=4.7.1'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'nokogiri','>=1.10.4'
 gem 'travis'
