@@ -54,13 +54,34 @@ RSpec.describe "Projects", type: :request do
 
     it "redirects to the last project created" do 
       project_attributes = FactoryBot.attributes_for(:project)
-      post "/projects", params:{project: project_attributes}
+      post projects_path, params:{project: project_attributes}
       expect(response).to have_http_status(302)
       # expect(response).to redirect_to projects_path(Project.last)
     end
     end
     describe "with invalid params" do 
      pending
+    end
+  end
+
+  describe "PATCH /projects/id" do 
+    let(:my_project){Project.first}
+    let(:valid_params) {{ project: {name:"Learning ruby the hard way 2", description:"Learning ruby the hard way description" ,status:"Deployed",duration:2 } }}
+
+    before(:each){patch project_url(my_project, params: valid_params)}
+
+
+    it "returns the updated project" do
+      # gets "/projects/#{my_project.id}.json"
+      # expect(my_project.name).to eq("Learning ruby the hard way 2")
+    end
+
+    it "returns the correct status code" do 
+     expect(response).to have_http_status(302)
+    end
+
+    it "returns the correct content-type" do 
+       expect(response.content_type).to eq(Mime[:html])
     end
   end
 
