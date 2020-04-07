@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+ruby '2.7.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2'
@@ -16,8 +16,6 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -28,7 +26,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'image_processing', '~> 1.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -36,16 +34,11 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-#Add gems for bootstrap and jquery 
-gem 'bootstrap','>=4.3.1'
-gem 'jquery-rails'
-gem 'font-awesome-sass'
-gem 'popper_js'
 
 #Add devise for authentication
 gem 'devise','>=4.7.1'
 gem 'devise-bootstrap-views', '~> 1.0'
-gem 'nokogiri','>=1.10.4'
+
 gem 'travis'
 gem 'coveralls', require: false
 
@@ -53,7 +46,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   #Add rspec 
-  gem 'rspec-rails'
+  gem 'rspec-rails','~>4.0'
   #Add simplecov for code coverage
   gem 'simplecov', require:false
 
