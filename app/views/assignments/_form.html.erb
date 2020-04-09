@@ -30,23 +30,17 @@
           <%= form.date_select :assigned_on,class:"form-control" %>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <%= form.label :resolved_on %>
-          <%= form.date_select :resolved_on %>
-        </div>
-      </div>
-      </div>
-      <div class="row">
+    </div>
+    <div class="row">
       <div class="col-md-12">
         <div class="form-group">
           <%= form.label :status %>
           <%= form.select(:status,["Pending","Resolved"].map{|u|[u]},{},({class:"form-control"})) %>
         </div>
       </div>
-      </div>
-      <div class="text-center">
-        <%= form.submit class:"btn btn-primary" %>
-      </div>
     </div>
-  <% end %>
+    <div class="text-center">
+      <%= form.submit class:"btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
