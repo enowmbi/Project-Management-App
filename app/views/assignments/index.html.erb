@@ -4,10 +4,9 @@
   <thead>
     <tr>
       <th>User</th>
-      <th>Issue</th>
+      <th>Task</th>
       <th>Assigned on</th>
       <th>Status</th>
-      <th>Resolved on</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +15,9 @@
     <% @assignments.each do |assignment| %>
       <tr>
         <td><%= assignment.user.full_name %></td>
-        <td><%= assignment.issue.title %></td>
+        <td><%= assignment.task.title %></td>
         <td><%= assignment.assigned_on %></td>
         <td><%= assignment.status %></td>
-        <td><%= assignment.resolved_on %></td>
         <td><%= link_to 'Show', assignment,class:"btn btn-primary btn-sm" %></td>
         <td><%= link_to 'Edit', edit_assignment_path(assignment),class:"btn btn-primary btn-sm" %></td>
         <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger btn-sm" %></td>
