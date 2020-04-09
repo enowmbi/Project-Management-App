@@ -1,13 +1,11 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>User:</strong>
   <%= @assignment.user.full_name %>
 </p>
 
 <p>
-  <strong>Project:</strong>
-  <%= @assignment.issue.title %>
+  <strong>Task:</strong>
+  <%= @assignment.task.title %>
 </p>
 
 <p>
@@ -18,11 +16,6 @@
 <p>
   <strong>Status:</strong>
   <%= @assignment.status %>
-</p>
-
-<p>
-  <strong>Resolved on:</strong>
-  <%= @assignment.resolved_on %>
 </p>
 
 <%= link_to 'Edit', edit_assignment_path(@assignment) %> |

@@ -2,23 +2,23 @@
 
 <p>
   <strong>Title:</strong>
-  <%= @issue.title %>
+  <%= @task.title %>
 </p>
 
 <p>
   <strong>Description:</strong>
-  <%= @issue.description %>
+  <%= @task.description %>
 </p>
 
 <p>
   <strong>Severity:</strong>
-  <%= @issue.severity %>
+  <%= @task.severity %>
 </p>
 
 <p>
   <strong>Status:</strong>
-  <%= @issue.status %>
+  <%= @task.status %>
 </p>
 
-<%= link_to 'Edit', edit_issue_path(@issue) %> |
-<%= link_to 'Back', issues_path %>
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>
