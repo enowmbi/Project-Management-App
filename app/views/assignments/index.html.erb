@@ -6,7 +6,6 @@
       <th>User</th>
       <th>Task</th>
       <th>Assigned on</th>
-      <th>Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,7 +16,6 @@
         <td><%= assignment.user.full_name %></td>
         <td><%= assignment.task.title %></td>
         <td><%= assignment.assigned_on %></td>
-        <td><%= assignment.status %></td>
         <td><%= link_to 'Show', assignment,class:"btn btn-primary btn-sm" %></td>
         <td><%= link_to 'Edit', edit_assignment_path(assignment),class:"btn btn-primary btn-sm" %></td>
         <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger btn-sm" %></td>

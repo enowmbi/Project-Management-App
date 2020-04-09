@@ -31,14 +31,6 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="form-group">
-          <%= form.label :status %>
-          <%= form.select(:status,["Pending","Resolved"].map{|u|[u]},{},({class:"form-control"})) %>
-        </div>
-      </div>
-    </div>
     <div class="text-center">
       <%= form.submit class:"btn btn-primary" %>
     </div>
