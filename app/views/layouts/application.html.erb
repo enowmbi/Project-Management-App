@@ -12,12 +12,17 @@
   <body>
     <%= render "/shared/navbar" %>
     <section>
-      <div class="container">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-        <%= yield %>
-      </div>
-      <p></p>
+        <% if !flash[:notice].blank? %>
+          <div class="alert alert-success" role="alert"> <%= flash[:notice] %></div>
+        <% end %>
+
+        <% if !flash[:warning].blank? %>
+          <div class="alert alert-warning" role="alert"> <%= flash[:warning] %></div>
+        <% end %>
+        <div class="container my-4">
+          <%= yield %>
+        </div>
+        <p></p>
     </section>
     <%= render "/shared/footer" %>
   </body>
