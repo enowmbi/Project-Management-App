@@ -1,4 +1,4 @@
-class Issue < ApplicationRecord
+class Task < ApplicationRecord
   belongs_to :project
   has_many :assignments, dependent: :destroy
   has_many :users, through: :assignments
