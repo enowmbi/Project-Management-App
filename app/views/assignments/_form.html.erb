@@ -20,8 +20,8 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <%= form.label :issue_id %>
-          <%= form.select(:issue_id,Issue.all.map{|i|[(i.title + "  (" + i.project.name + ")"),i.id]},{},({class:"form-control"})) %>
+          <%= form.label :task_id %>
+          <%= form.select(:task_id,Task.all.map{|i|[(i.title + "  (" + i.project.name + ")"),i.id]},{},({class:"form-control"})) %>
         </div>
       </div>
       <div class="col-md-6">
