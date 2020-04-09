@@ -7,6 +7,6 @@ class Task < ApplicationRecord
   validates :title, presence: true
   validates :title, uniqueness: {scope: :project_id}
   validates :description, presence: true
-  validates :severity, presence: true
+  validates :priority, presence: true
   validates :status, presence: true
 end
