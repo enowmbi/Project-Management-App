@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :assignments, dependent: :destroy
   has_many :tasks, through: :assignments
+  has_many :teams
 
   def full_name
    self.first_name + " " +  self.last_name
