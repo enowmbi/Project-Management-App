@@ -8,24 +8,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
 
-        <% if current_user && current_user.is_admin? %>
-        <li class="nav-item active">
-          <%= link_to("<h5>Teams</h5>".html_safe,teams_path,class:"nav-link") %>
-        </li>
-        <li class="nav-item">
-          <%= link_to("<h5>Projects</h5>".html_safe,projects_path,class:"nav-link") %>
-        </li>
-        <li class="nav-item" >
-          <%= link_to("<h5>Tasks</h5>".html_safe,tasks_path,class:"nav-link") %>
-        </li>
-        <li class="nav-item" >
-          <%= link_to("<h5>Assignments</h5>".html_safe,assignments_path,class:"nav-link") %>
-        </li>
-          <li class="nav-item">
-            <%= link_to("<h5>User Accounts</h5>".html_safe,root_path,class:"nav-link") %>
-          </li>
-        <% end %>
         <% if current_user %>
+          <li class="nav-item active">
+            <%= link_to("<h5>Teams</h5>".html_safe,teams_path,class:"nav-link") %>
+          </li>
+          <li class="nav-item">
+            <%= link_to("<h5>Projects</h5>".html_safe,projects_path,class:"nav-link") %>
+          </li>
+          <li class="nav-item" >
+            <%= link_to("<h5>Tasks</h5>".html_safe,tasks_path,class:"nav-link") %>
+          </li>
+          <li class="nav-item" >
+            <%= link_to("<h5>Assignments</h5>".html_safe,assignments_path,class:"nav-link") %>
+          </li>
           <li class="nav-item">
             <%= link_to("<h5>Profile</h5>".html_safe,user_path(current_user),class:"nav-link") %>
           </li>
