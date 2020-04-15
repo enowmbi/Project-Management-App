@@ -1,0 +1,21 @@
+<div>
+  <div class="row my-2">
+    <h5>Welcome <%= current_user.full_name %> </h5>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <span class="h5">My Teams </span><%= link_to("+", new_team_path,class: "btn btn-primary btn-sm") %>
+    <hr/>
+    <%= render "/shared/my_teams" %>
+    </div>
+    <div class="col-md-4 border-left">
+      <span class="h5">My Projects </span><%= link_to("+", new_project_path,class: "btn btn-primary btn-sm") %>
+    <hr/>
+    <%= render "/shared/my_projects" %>
+    </div>
+    <div class="col-md-4 border-left">
+      <span class="h5">Activities </span>
+      <hr/>
+    </div>
+  </div>
+</div>
