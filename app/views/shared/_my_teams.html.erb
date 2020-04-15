@@ -1,0 +1,3 @@
+<% Team.all.where(user_id: current_user).each do |team| %>
+  <h5><%= team.name %></h5>
+  <% end %>
