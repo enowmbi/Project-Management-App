@@ -1,0 +1,3 @@
+<% Project.all.where(user_id: current_user).each do |project| %>
+  <h5><%= project.name %></h5>
+  <% end %>
