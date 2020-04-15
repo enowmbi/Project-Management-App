@@ -1,2 +1,7 @@
-<h1>Home</h1>
+<% if current_user %>
+  <%= render '/shared/dashboard' %>
+<% else %>
+  <%= render '/shared/home' %>
+<% end %>
+
 
