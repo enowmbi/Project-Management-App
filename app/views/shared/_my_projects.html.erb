@@ -1,6 +1,6 @@
 <% Project.all.where(user_id: current_user).each do |project| %>
   <h5><%= link_to(project.name,project_path(project)) %></h5>
-  <h6> Team: </h6>
-  <h6>Created by: <%= project.user.full_name %></h6>
+  <h6><strong> Team:</strong> <%= project.team.name %> </h6>
+  <h6><strong>Created by:</strong> <%= project.user.full_name %></h6>
   <hr/>
   <% end %>
