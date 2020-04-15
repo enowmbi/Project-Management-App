@@ -1,7 +1,8 @@
 <% Team.all.where(user_id: current_user).each do |team| %>
-  <div class="alert alert-success">
-    <h5><%= team.name %></h5>
-    <strong><%= pluralize(2, 'member') %>  </strong>
+  <div class="alert alert-primary">
+    <h5><%= link_to(team.name, team_path(team)) %></h5>
+    <%= pluralize(2, 'member') %>  
+    <h6> Members :  </h6>
   </div>
   <hr/>
 <% end %>
