@@ -14,7 +14,7 @@ class TeamsController < ApplicationController
 
   # GET /teams/new
   def new
-    @team = Team.new
+    @team = current_user.teams.build
   end
 
   # GET /teams/1/edit
@@ -24,7 +24,7 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
-    @team = Team.new(team_params)
+    @team = current_user.teams.build(team_params)
 
     respond_to do |format|
       if @team.save
