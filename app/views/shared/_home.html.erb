@@ -1,10 +1,26 @@
 <div class="row">
-  <div class="col-md-8">
-    <h4> Why you should use Project Management App for your projects </h4>
+  <div class="col-md-7">
+    <h5> Reasons to consider Project Management App for your projects </h5>
+    <hr/>
+    <ul>
+      <li>Manage your teams, projects and tasks easily    </li>
+      <li>Intuitive user interface makes it easy to find your way</li>
+      <li>Reports to help you make informed decisions</li>
+      <li>No need to create another user account just use your Twitter,Instagram,github or facebook account </li>
+    </ul>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-5">
     <h5>Sign up today  </h5>
+    <hr/>
     <%= link_to "Sign up",new_user_registration_path, class: "btn btn-primary" %>
-
+    <p></p>
+    <h5> Select a sign in method below: </h5>
+    <%= link_to('Sign in',new_user_session_path,class:"btn btn-primary m-2") %>
+    <%= link_to('LinkedIn',new_user_session_path,class:"btn btn-primary m-2") %>
+    <%= link_to('Instagram',new_user_session_path,class:"btn btn-primary m-2") %>
+    <br/>
+    <%= link_to('Twitter',new_user_session_path,class:"btn btn-primary m-2") %>
+    <%= link_to('Github',new_user_session_path,class:"btn btn-primary m-2") %>
+    <%= link_to('Facebook',new_user_session_path,class:"btn btn-primary m-2") %>
   </div>
 </div>
