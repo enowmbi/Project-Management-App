@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_192816) do
+ActiveRecord::Schema.define(version: 2020_04_16_090227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 2020_04_15_192816) do
     t.bigint "task_id"
     t.index ["task_id"], name: "index_assignments_on_task_id"
     t.index ["user_id"], name: "index_assignments_on_user_id"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "team_id", null: false
+    t.boolean "owner", default: false
+    t.index ["team_id"], name: "index_memberships_on_team_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -75,6 +83,8 @@ ActiveRecord::Schema.define(version: 2020_04_15_192816) do
 
   add_foreign_key "assignments", "tasks"
   add_foreign_key "assignments", "users"
+  add_foreign_key "memberships", "teams"
+  add_foreign_key "memberships", "users"
   add_foreign_key "projects", "teams"
   add_foreign_key "projects", "users"
   add_foreign_key "tasks", "projects"
