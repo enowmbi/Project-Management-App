@@ -1,8 +1,15 @@
-<% Team.all.where(user_id: current_user).each do |team| %>
+<% current_user.teams.each do |team| %>
   <div class="alert alert-primary">
     <h5><%= link_to(team.name, team_path(team)) %></h5>
-    <%= pluralize(2, 'member') %>  
-    <h6> Members :  </h6>
+    <% team_users_count = team.users.count %>
+    <h6 class="badge badge-secondary"><%= pluralize(team_users_count, 'member') %></h6>  
+    </br>
+    <h6 class="badge badge-secondary"> Active Members :  </h6>
+    <% active_members = [] %>
+    <% team.users.each do |user| %>
+      <% active_members << user.full_name %>
+      <%= active_members.join(', ') %>
+    <% end %>
   </div>
   <hr/>
 <% end %>
