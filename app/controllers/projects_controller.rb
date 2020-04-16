@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+    @teams =  current_user.teams
   end
 
   # POST /projects
