@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :tasks
   resources :projects
+  resources :memberships
   resources :users, only: [:show]
 end
