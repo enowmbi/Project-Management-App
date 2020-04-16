@@ -4,12 +4,12 @@
   </div>
   <div class="row">
     <div class="col-md-4">
-      <span class="h5">My Teams </span><%= link_to("+", new_team_path,class: "btn btn-primary btn-sm") %>
+      <span class="h5">My Teams <span class="h6 badge badge-pill badge-primary"><%= current_user.teams.count %></span></span><%= link_to("+", new_team_path,class: "btn btn-primary btn-sm pull-right") %>
     <hr/>
     <%= render "/shared/my_teams" %>
     </div>
     <div class="col-md-4 border-left">
-      <span class="h5">My Projects </span><%= link_to("+", new_project_path,class: "btn btn-primary btn-sm") %>
+      <span class="h5">My Projects <span class=" h6 badge badge-primary badge-pill"><%=current_user.projects.count %></span> </span><%= link_to("+", new_project_path,class: "btn btn-primary btn-sm pull-right") %>
     <hr/>
     <%= render "/shared/my_projects" %>
     </div>
