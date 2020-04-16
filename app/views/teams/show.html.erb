@@ -5,7 +5,7 @@
 
 <p>
   <strong>Created by:</strong>
-  <%= @team.user.full_name %>
+  <%= @team.users.where("memberships.owner = true").first.full_name %>
 </p>
 
 <%= link_to 'Edit', edit_team_path(@team), class: "btn btn-warning btn-sm" %> |
