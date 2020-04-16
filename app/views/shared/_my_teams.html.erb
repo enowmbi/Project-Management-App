@@ -2,9 +2,8 @@
   <div class="alert alert-primary">
     <h5><%= link_to(team.name, team_path(team)) %></h5>
     <% team_users_count = team.users.count %>
-    <h6 class="badge badge-secondary"><%= pluralize(team_users_count, 'member') %></h6>  
+    <h6 class="badge badge-secondary"><%= pluralize(team_users_count, 'Active Member') %></h6>  
     </br>
-    <h6 class="badge badge-secondary"> Active Members :  </h6>
     <% active_members = [] %>
     <% team.users.each do |user| %>
       <% active_members << user.full_name %>
