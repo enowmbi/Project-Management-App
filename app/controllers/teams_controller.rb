@@ -24,15 +24,14 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
-    @team = current_user.teams.build(team_params)
-
+    @team = Team.new(team_params)
     respond_to do |format|
-      if @team.save
+      if @team.save && @membership = current_user.memberships.build(team_id: @team.id,owner: true).save
         format.html { redirect_to @team, notice: 'Team was successfully created.' }
         format.json { render :show, status: :created, location: @team }
       else
         format.html { render :new }
-        format.json { render json: @team.errors, status: :unprocessable_entity }
+        format.json { render json: [@team.errors,@membership.errors], status: :unprocessable_entity }
       end
     end
   end
@@ -62,13 +61,13 @@ class TeamsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_team
-      @team = Team.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_team
+    @team = Team.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def team_params
-      params.require(:team).permit(:name, :user_id)
-    end
+  # Only allow a list of trusted parameters through.
+  def team_params
+    params.require(:team).permit(:name, :user_id)
+  end
 end
