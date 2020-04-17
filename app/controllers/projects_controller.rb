@@ -1,7 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :set_teams, only: [:new, :edit]
-  before_action :build_tasks_from_project, only: [:new,:edit]
 
   # GET /projects
   # GET /projects.json
@@ -17,10 +16,12 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = current_user.projects.build
+    @project.tasks.build
   end
 
   # GET /projects/1/edit
   def edit
+    @project.tasks.build
   end
 
   # POST /projects
@@ -72,10 +73,6 @@ class ProjectsController < ApplicationController
   #Set the current user's teams to be used when creating and editing projects
   def set_teams
     @teams =  current_user.teams
-  end
-
-  def build_tasks_from_project
-    @project.tasks.build
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
