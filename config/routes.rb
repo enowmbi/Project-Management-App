@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   root "home#index"
-  resources :teams
   resources :assignments
   devise_for :users
-  resources :projects do 
-    resources :tasks
+  resources :teams do
+    resources :projects do 
+      resources :tasks
+    end
   end
   # resources :memberships
   resources :users, only: [:show]
