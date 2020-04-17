@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :set_teams, only: [:new, :edit]
+  before_action :build_tasks_from_project, only: [:new,:edit]
 
   # GET /projects
   # GET /projects.json
@@ -73,9 +74,13 @@ class ProjectsController < ApplicationController
     @teams =  current_user.teams
   end
 
+  def build_tasks_from_project
+    @project.tasks.build
+  end
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def project_params
-    params.require(:project).permit(:name, :description, :duration, :status, :team_id)
+    params.require(:project).permit(:name, :description, :duration, :status, :team_id,tasks_attributes:[:id,:title,:description,:status,:priority,:due_date])
   end
 
 
