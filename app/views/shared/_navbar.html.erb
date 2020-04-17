@@ -18,15 +18,6 @@
               <%= link_to("<h5>Teams</h5>".html_safe,teams_path,class:"nav-link") %>
             </li>
           <% end %>
-          <% if current_page?(projects_path) %>
-            <li class="nav-item active"> 
-              <%= link_to("<h5>Projects</h5>".html_safe,projects_path,class:"nav-link") %>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to("<h5>Projects</h5>".html_safe,projects_path,class:"nav-link") %>
-            </li>
-          <% end %>
           <% if current_page?(user_path(current_user)) %>
             <li class="nav-item active"> 
               <%= link_to("<h5>Profile</h5>".html_safe,user_path(current_user),class:"nav-link") %>
