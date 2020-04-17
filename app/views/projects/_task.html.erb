@@ -6,7 +6,7 @@
     </div>
     <div class="form-group col-md-2">
       <%= task_form.label :priority %>
-      <%= task_form.select(:priority,["High","Medium","Low"].map{|s|[s]},{},{class:"form-control"}) %>
+      <%= task_form.select(:priority,ApplicationHelper::TASK_PRIORITIES.map{|s|[s]},{},{class:"form-control"}) %>
     </div>
     <div class="form-group col-md-2">
       <%= task_form.label :due_date %>
@@ -14,7 +14,7 @@
     </div>
     <div class="form-group col-md-2">
       <%= task_form.label :status %>
-      <%= task_form.select(:status,["Incomplete","Complete"].map{|s|[s]},{},{class:"form-control"}) %>
+      <%= task_form.select(:status,ApplicationHelper::TASK_STATUS.map{|s|[s]},{},{class:"form-control"}) %>
     </div>
   </div>
   <div class="row">

@@ -23,7 +23,7 @@
 
     <div class="form-group col-md-2">
       <%= form.label :status %>
-      <%= form.select(:status,['Incomplete','Complete'].map{|s|[s]},{},class:"form-control") %>
+      <%= form.select(:status,ApplicationHelper::PROJECT_STATUS.map{|s|[s]},{},class:"form-control") %>
     </div>
   </div>
   <div class="row">
