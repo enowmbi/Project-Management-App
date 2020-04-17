@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   resources :teams
   resources :assignments
   devise_for :users
-  resources :tasks
-  resources :projects
+  resources :projects do 
+    resources :tasks
+  end
   # resources :memberships
   resources :users, only: [:show]
 end
