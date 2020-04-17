@@ -1,12 +1,28 @@
-<p>
-  <strong>Name:</strong>
-  <%= @team.name %>
-</p>
-
-<p>
-  <strong>Created by:</strong>
-  <%= display_team_owner(@team) %>
-</p>
+<div>
+  <div class="row my-2">
+    <div class="col-md-7">
+      <h5>Team Name:</h5>
+      <h3><%= @team.name %></h3>
+      <strong>Created by :</strong>
+      <span class="h5"><%= display_team_owner(@team) %></span>
+      <hr/>
+      <h5>Team Members <span class="h6 badge badge-pill badge-primary"><%= @team.users.count %></span><h5/>
+          <hr/>
+          <%= render "/shared/team_members", team: @team %>
+    </div>
+    <div class="col-md-5">
+      <h4><%= "#{@team.name} Projects" %></h4>
+      <hr/>
+      <% team_projects_count = @team.projects.count %>
+      <h5><strong>Active Projects</strong> <span class=" h6 badge badge-primary badge-pill"><%= team_projects_count %></span> </h5>
+      <% if team_projects_count > 0 %>
+        <%= render "/shared/team_projects",team: @team %>
+      <% else %>
+        <p>No active projects yet <%= link_to('Add one',new_project_path,class:"btn btn-outline-secondary btn-sm") %><p>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_team_path(@team), class: "btn btn-warning btn-sm" %> |
 <%= link_to 'Back', teams_path,class: "btn btn-secondary btn-sm" %>
