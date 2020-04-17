@@ -1,0 +1,4 @@
+<% team.projects.each do |project| %>
+  <h5><%= link_to(project.name,project_path(project)) %></h5>
+  <hr/>
+<% end %>
