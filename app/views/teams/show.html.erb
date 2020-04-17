@@ -1,20 +1,19 @@
 <div>
   <div class="row my-2">
     <div class="col-md-7">
-      <h5>Team Name:</h5>
-      <h3><%= @team.name %></h3>
+      <h6>Team Name:</h6>
+      <h3><strong><%= @team.name %></strong></h3>   
       <strong>Created by :</strong>
-      <span class="h5"><%= display_team_owner(@team) %></span>
+      <span class="h6"><%= display_team_owner(@team) %></span>
       <hr/>
-      <h5>Team Members <span class="h6 badge badge-pill badge-primary"><%= @team.users.count %></span><h5/>
-          <hr/>
+      <h5>Team Members <span class="badge badge-pill badge-primary"><%= @team.users.count %></span><h5/>
           <%= render "/shared/team_members", team: @team %>
     </div>
-    <div class="col-md-5">
-      <h4><%= "#{@team.name} Projects" %></h4>
-      <hr/>
+    <div class="col-md-5 my-4">
+      <h5><%= "#{@team.name} Projects" %></h5>
       <% team_projects_count = @team.projects.count %>
       <h5><strong>Active Projects</strong> <span class=" h6 badge badge-primary badge-pill"><%= team_projects_count %></span> </h5>
+      <hr/>
       <% if team_projects_count > 0 %>
         <%= render "/shared/team_projects",team: @team %>
       <% else %>
