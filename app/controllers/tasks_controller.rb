@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_project, only: [:new,:create,:edit]
   # GET /tasks
   # GET /tasks.json
   def index
@@ -62,13 +62,17 @@ class TasksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_task
-      @task = Task.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_task
+    @task = Task.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def task_params
-      params.require(:task).permit(:title, :description, :priority, :status, :project_id)
-    end
+  def set_project
+    @project = Project.find(params[:project_id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def task_params
+    params.require(:task).permit(:title, :description, :priority, :status, :project_id,:due_date)
+  end
 end
