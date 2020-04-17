@@ -23,3 +23,6 @@ import "bootstrap"
 import "jquery"
 import "popper.js"
 
+
+require("trix")
+require("@rails/actiontext")
