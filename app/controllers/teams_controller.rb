@@ -15,6 +15,7 @@ class TeamsController < ApplicationController
   # GET /teams/new
   def new
     @team = current_user.teams.build
+    @team.projects.build
   end
 
   # GET /teams/1/edit
@@ -24,7 +25,7 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
-    @team = Team.new(team_params)
+    @team = current_user.teams.build(team_params)
     respond_to do |format|
       if @team.save && @membership = current_user.memberships.build(team_id: @team.id,owner: true).save
         format.html { redirect_to @team, notice: 'Team was successfully created.' }
@@ -68,6 +69,6 @@ class TeamsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def team_params
-    params.require(:team).permit(:name)
+    params.require(:team).permit(:name, projects_attributes:[:id,:name,:description,:status,:team_id,:due_date])
   end
 end
