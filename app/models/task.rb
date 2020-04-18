@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  belongs_to :project
+  belongs_to :project, counter_cache: true
   has_many :assignments, dependent: :destroy
   has_many :users, through: :assignments
 
