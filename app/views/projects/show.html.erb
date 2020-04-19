@@ -20,7 +20,6 @@
 </div>
 <div class="text-center">
   <hr/>
-  <%= link_to 'Add Task',new_team_project_path(params[:team_id]),class: "btn btn-primary" %> |
   <%= link_to 'Edit', edit_team_project_path(params[:team_id],@project),class: "btn btn-warning" %> |
   <%= link_to 'Back', team_projects_path(params[:team_id]),class: "btn btn-secondary" %>
   <hr/>
@@ -28,6 +27,7 @@
 <div class="row">
   <div class="col-12">
     <h5><strong>Tasks</strong></h5>
+    <%= link_to 'Add Task to this Project',new_team_project_task_path(params[:team_id],@project),class: "btn btn-primary btn-sm pull-right" %> 
     <hr/>
     <% if @project.tasks_count > 0 %>
 
