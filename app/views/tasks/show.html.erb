@@ -18,5 +18,5 @@
   <%= @task.status %>
 </p>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<%= link_to 'Edit', edit_team_project_task_path(params[:team_id],params[:project_id],@task) %> |
+<%= link_to 'Back', team_project_tasks_path(params[:team_id],params[:project_id]) %>
