@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-  before_action :set_team, only: [:new, :edit]
+  before_action :set_team, only: [:new, :create, :edit]
 
   # GET /projects
   # GET /projects.json
@@ -15,8 +15,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
-    @team.projects.build
-    @project.tasks.build
+    @project = Project.new
   end
 
   # GET /projects/1/edit
@@ -26,11 +25,11 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(project_params)
+    @project = @team.projects.build(project_params)
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to team_project_path(params[:team_id],@project), notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
@@ -58,7 +57,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
+      format.html { redirect_to team_projects_url(params[:team_id]), notice: 'Project was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -75,7 +74,7 @@ class ProjectsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def project_params
-    params.require(:project).permit(:name, :description, :due_date, :status, :team_id,tasks_attributes:[:id,:title,:description,:status,:priority,:due_date,:project_id])
+    params.require(:project).permit(:name, :description, :due_date, :status, :team_id)
   end
 
 
