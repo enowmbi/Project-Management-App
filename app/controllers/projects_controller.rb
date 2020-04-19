@@ -1,10 +1,11 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_team, only: [:new, :edit]
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects = Project.includes(:tasks).where(team_id: params[:team_id])
   end
 
   # GET /projects/1
@@ -14,6 +15,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
+    @team.projects.build
     @project.tasks.build
   end
 
@@ -42,7 +44,7 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.html { redirect_to team_project_path(params[:team_id],@project), notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }
@@ -65,6 +67,10 @@ class ProjectsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_project
     @project = Project.find(params[:id])
+  end
+
+  def set_team
+    @team = Team.find(params[:team_id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
