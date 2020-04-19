@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = Task.where(project_id: params[:project_id])
   end
 
   # GET /tasks/1
@@ -24,11 +24,11 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(task_params)
+    @task = @project.tasks.build(task_params)
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'task was successfully created.' }
+        format.html { redirect_to team_project_task_path(params[:team_id],@project,@task), notice: 'task was successfully created.' }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'task was successfully updated.' }
+        format.html { redirect_to team_project_task_path(params[:team_id],@project,@task), notice: 'task was successfully updated.' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'task was successfully destroyed.' }
+      format.html { redirect_to team_project_tasks_url(params[:team_id],@project), notice: 'task was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
