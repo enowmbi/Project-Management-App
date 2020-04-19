@@ -1,6 +1,50 @@
 <h1>Editing Task</h1>
 
-<%= render 'form', task: @task %>
+<%= form_for([@team,@project,@task]) do |form| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
-<%= link_to 'Show', @task %> |
-<%= link_to 'Back', tasks_path %>
+      <ul>
+        <% @task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= form.label :title %>
+        <%= form.text_field :title,class:"form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :description %>
+        <%= form.text_area :description,class:"form-control"%>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :priority %>
+        <%= form.select(:priority,ApplicationHelper::TASK_PRIORITIES.map{|s|[s]},{},{class:"form-control"}) %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :status %>
+        <%= form.select(:status,ApplicationHelper::TASK_STATUS.map{|s|[s]},{},{class:"form-control"}) %>
+      </div>
+    </div>
+    </div>
+    <p></p>
+    <div class="text-center">
+      <%= form.submit class:"btn btn-primary" %>
+    </div>
+  </div>
+  </div>
+<% end %>
+
+<%= link_to 'Show', team_project_task_path(params[:team_id],params[:project_id],@task) %> |
+<%= link_to 'Back', team_project_tasks_path(params[:team_id],params[:project_id]) %>
