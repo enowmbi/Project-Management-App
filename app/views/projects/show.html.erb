@@ -28,7 +28,6 @@
   <div class="col-12">
     <h5><strong>Tasks</strong></h5>
     <%= link_to 'Add Task to this Project',new_team_project_task_path(params[:team_id],@project),class: "btn btn-primary btn-sm pull-right" %> 
-    <hr/>
     <% if @project.tasks_count > 0 %>
 
       <table class="table table-responsive">
@@ -49,14 +48,15 @@
               <td><%= task.description %></td>
               <td><%= task.priority %></td>
               <td><%= task.status %></td>
-              <td><%= link_to 'Show', task,class:"btn btn-primary btn-sm" %></td>
-              <td><%= link_to 'Edit', edit_task_path(task),class:"btn btn-primary btn-sm" %></td>
-              <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger btn-sm" %></td>
+              <td><%= link_to 'Show', team_project_task_path(params[:team_id],params[:id],task),class:"btn btn-primary btn-sm" %></td>
+              <td><%= link_to 'Edit', edit_team_project_task_path(params[:team_id],params[:id],task),class:"btn btn-primary btn-sm" %></td>
+              <td><%= link_to 'Destroy', team_project_task_path(params[:team_id],params[:id],task), method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger btn-sm" %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     <% else %>
+    <hr/>
       <p>No task yet. <%= link_to('Add one',root_path) %>
     <% end %>
   </div>
