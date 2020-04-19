@@ -1,4 +1,4 @@
 <% team.projects.each do |project| %>
-  <h6><%= link_to(project.name,project_path(project)) %></h6>
+  <h6><%= link_to(project.name,team_project_path(team,project)) %></h6>
   <hr/>
 <% end %>
