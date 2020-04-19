@@ -2,5 +2,5 @@
 
 <%= render 'form', {project: @project, teams: @teams} %>
 
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Show', team_project_path(params[:team_id],@project) %> |
+<%= link_to 'Back', team_projects_path(params[:team_id]) %>
