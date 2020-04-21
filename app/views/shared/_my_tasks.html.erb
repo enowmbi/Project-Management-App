@@ -1,0 +1,6 @@
+<% tasks.each do |task| %>
+  <h5><%= link_to(task.title,team_project_task_path(task.project.team,task.project,task)) %></h5>
+  <h6><span class="badge badge-secondary">Project :</span> <%= task.project.name %> </h6>
+  <%# <h6><span class="badge badge-secondary">Created by :</span> <%= project.team.name %1></h6> %>
+  <hr/>
+  <% end %>
