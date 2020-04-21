@@ -1,11 +1,17 @@
 <% teams = [] %>
 <% projects = []%>
+<% tasks = [] %>
 <% total_projects_count = 0 %>
+<% total_tasks_count =0 %>
 <% current_user.teams.includes(:projects).each do |team| %>
   <% teams << team %>
   <% team.projects.each do |project| %>
     <% projects << project %>
     <% total_projects_count +=1 %>
+    <% project.tasks.each do |task| %>
+      <% tasks << task  %>
+      <% total_tasks_count +=1 %>
+    <% end %>
   <% end %>
 <% end %>
 
@@ -20,13 +26,14 @@
     <%= render "/shared/my_teams",teams: teams %>
     </div>
     <div class="col-md-4 border-left">
-      <span class="h5">My Projects <span class=" h6 badge badge-primary badge-pill"><%= total_projects_count %></span> </span><%= link_to("+", root_path,class: "btn btn-primary btn-sm pull-right") %>
-    <hr/>
-    <%= render "/shared/my_projects",projects: projects %>
+      <span class="h5">My Projects <span class=" h6 badge badge-primary badge-pill"><%= total_projects_count %></span> </span>
+      <hr/>
+      <%= render "/shared/my_projects",projects: projects %>
     </div>
     <div class="col-md-4 border-left">
-      <span class="h5">My Tasks </span>
+      <span class="h5">My Tasks <span class="h6 badge badge-primary badge-pill"><%= total_tasks_count %></span></span>
       <hr/>
+      <%= render "/shared/my_tasks",tasks: tasks %>
     </div>
   </div>
 </div>
