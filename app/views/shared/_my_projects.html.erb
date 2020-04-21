@@ -1,7 +1,6 @@
-pending
-<%# <% current_user.projects.each do |project| %1> %>
-  <%# <h5><%= link_to(project.name,project_path(project)) %1></h5> %>
-  <%# <h6><span class="badge badge-secondary">Team :</span> <%= project.team.name %1> </h6> %>
-  <%# <h6><span class="badge badge-secondary">Created by :</span> <%= project.user.full_name %1></h6> %>
+<% projects.each do |project| %>
+  <h5><%= link_to(project.name,team_project_path(project.team,project)) %></h5>
+  <h6><span class="badge badge-secondary">Team :</span> <%= project.team.name %> </h6>
+  <%# <h6><span class="badge badge-secondary">Created by :</span> <%= project.team.name %1></h6> %>
   <hr/>
-  <%# <% end %1> %>
+  <% end %>
