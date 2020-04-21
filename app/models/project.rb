@@ -3,6 +3,8 @@ class Project < ApplicationRecord
   belongs_to :team, counter_cache: true
   accepts_nested_attributes_for :tasks,reject_if: :all_blank,allow_destroy: true
 
+  has_rich_text :description
+
   validates :name, presence: true
   validates :name, uniqueness: true
   validates :description, presence: true
