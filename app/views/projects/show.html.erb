@@ -57,7 +57,7 @@
       </table>
     <% else %>
     <hr/>
-      <p>No task yet. <%= link_to('Add one',root_path) %>
+      <p>No task yet. <%= link_to('Add one',new_team_project_task_path(params[:team_id],@project)) %>
     <% end %>
   </div>
 </div>
