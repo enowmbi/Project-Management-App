@@ -9,4 +9,7 @@ class Task < ApplicationRecord
   validates :description, presence: true
   validates :priority, presence: true
   validates :status, presence: true
+
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 end
