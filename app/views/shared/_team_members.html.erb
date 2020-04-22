@@ -3,7 +3,7 @@
     <div class="col-md-4 border border-secondary">
       <div class="row">
         <div class="col-md-2">
-          <h6><%=image_tag('',class: "img-responsive img-thumbnail")%></h6>
+          <%=gravatar_image_tag(user.email,size: 48, class:'img-thumbnail img-responsive')%>
         </div>
         <div class="col-md-9">
           <h6><strong><%=user.full_name %></h6></strong>
