@@ -5,6 +5,7 @@ class Team < ApplicationRecord
 
   default_scope ->{order(created_at: :desc)}
 
+
   extend FriendlyId
   friendly_id :name
 end
