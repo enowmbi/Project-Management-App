@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+    :recoverable, :rememberable, :validatable, :confirmable
 
   has_many :assignments, dependent: :destroy
   has_many :tasks, through: :assignments
@@ -14,14 +14,19 @@ class User < ApplicationRecord
   friendly_id :full_name, use: :slugged
 
   def full_name
-   self.first_name + " " +  self.last_name
+    self.first_name + " " +  self.last_name
   end
 
   def gravatar_url
-     stripped_email = self.email.strip
-     downcased_email = stripped_email.downcase
-     email_hash = Digest::MD5.hexdigest(downcased_email)
-     "http://gravatar.com/avatar/#{email_hash}"
+    stripped_email = self.email.strip
+    downcased_email = stripped_email.downcase
+    email_hash = Digest::MD5.hexdigest(downcased_email)
+    "http://gravatar.com/avatar/#{email_hash}"
+  end
+
+  protected
+  def password_required?
+    confirmed? ? super : false
   end
 
 end
