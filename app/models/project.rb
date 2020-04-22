@@ -11,4 +11,7 @@ class Project < ApplicationRecord
   validates :status, presence: true
 
   default_scope ->{order(created_at: :desc)}
+
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 end

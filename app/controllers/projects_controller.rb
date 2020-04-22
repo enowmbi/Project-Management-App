@@ -66,11 +66,11 @@ class ProjectsController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_project
-    @project = Project.find(params[:id])
+    @project = Project.friendly.find(params[:id])
   end
 
   def set_team
-    @team = Team.find(params[:team_id])
+    @team = Team.friendly.find(params[:team_id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
