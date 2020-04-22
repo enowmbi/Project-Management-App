@@ -10,9 +10,18 @@ class User < ApplicationRecord
   has_many :teams, through: :memberships
   has_many :projects
 
+  extend FriendlyId
+  friendly_id :full_name, use: :slugged
 
   def full_name
    self.first_name + " " +  self.last_name
+  end
+
+  def gravatar_url
+     stripped_email = self.email.strip
+     downcased_email = stripped_email.downcase
+     email_hash = Digest::MD5.hexdigest(downcased_email)
+     "http://gravatar.com/avatar/#{email_hash}"
   end
 
 end
