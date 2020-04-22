@@ -1,11 +1,11 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_project, only: [:new,:create,:edit]
+  before_action :set_project, only: [:index, :new,:create,:edit]
   before_action :set_team, only: [:new,:create,:edit]
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.where(project_id: params[:project_id])
+    @tasks = Task.where(project_id: @project)
   end
 
   # GET /tasks/1
