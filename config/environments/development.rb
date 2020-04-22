@@ -36,6 +36,8 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
 
+  config.action_mailer.default_url_options = { :host => "localhost" }
+
   config.action_mailer.smtp_settings = {
     address: Rails.application.credentials.mailjet.dig(:smtp_server),
     port: 587,
