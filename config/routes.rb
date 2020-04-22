@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "home#index"
   resources :assignments
-  devise_for :users
+  devise_for :users ,controllers: {confirmations: 'confirmations'}
   resources :teams do
     resources :projects do 
       resources :tasks
