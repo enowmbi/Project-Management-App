@@ -34,11 +34,6 @@
       <%= form.rich_text_area :description %>
     </div>
   </div>
-  <%= form.fields_for :tasks do |task_form| %>
-    <p><strong>Add task to project</strong></p>
-    <hr/>
-    <%= render "projects/task",task_form: task_form %>
-  <% end %>
 
   <div class="text-center">
     <%= form.submit class:"btn btn-primary"%>
