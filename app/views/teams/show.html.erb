@@ -5,7 +5,7 @@
 <h3><strong><%= @team.name %></strong></h3>   
 <strong>Created by :</strong>
 <span class="h6"><%= display_team_owner(@team) %></span>
-<p><%= link_to("Invite New Member to joint the Team",root_path,class: "btn btn-primary btn-sm pull-right")%></p>
+<p><%= link_to("Invite New Member to join Team",root_path,class: "btn btn-primary btn-sm pull-right")%></p>
 <hr/>
 <h5>Team Members <span class="badge badge-pill badge-primary"><%= @team.users.count %></span><h5/>
 <%= render "/shared/team_members", team: @team %>
