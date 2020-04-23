@@ -5,7 +5,7 @@
 <h3><strong><%= @team.name %></strong></h3>   
 <strong>Created by :</strong>
 <span class="h6"><%= display_team_owner(@team) %></span>
-<p><%= link_to("Invite New Member to join Team",root_path,class: "btn btn-primary btn-sm pull-right")%></p>
+<p><%= link_to('Invite New Members to Join Team',new_user_registration_path,class:'btn btn-primary btn-sm pull-right') %></p>
 <hr/>
 <h5>Team Members <span class="badge badge-pill badge-primary"><%= @team.users.count %></span><h5/>
 <%= render "/shared/team_members", team: @team %>
@@ -20,10 +20,40 @@
        <%= render "/shared/team_projects",team: @team %>
      <% else %>
        <p>No active projects yet<p>
-         <% end %>
+     <% end %>
 </div>
 </div>
 </div>
 
 <%= link_to 'Edit', edit_team_path(@team), class: "btn btn-warning btn-sm" %> |
 <%= link_to 'Back', teams_path,class: "btn btn-secondary btn-sm" %>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
