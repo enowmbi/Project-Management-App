@@ -11,11 +11,7 @@ class User < ApplicationRecord
   has_many :projects
 
   extend FriendlyId
-  friendly_id :full_name, use: :slugged
-
-  def full_name
-    self.first_name + " " +  self.last_name
-  end
+  friendly_id :name, use: :slugged
 
   def gravatar_url
     stripped_email = self.email.strip
