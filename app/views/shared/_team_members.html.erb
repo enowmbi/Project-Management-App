@@ -6,7 +6,7 @@
           <%=gravatar_image_tag(user.email,size: 48, class:'img-thumbnail img-responsive')%>
         </div>
         <div class="col-md-9">
-          <h6><strong><%=user.full_name %></h6></strong>
+          <h6><strong><%=user.name %></h6></strong>
           <h6><%=user.email %></h6>
           <h6><%= user.created_at.strftime("%b %d,%Y") %></h6>
         </div>
