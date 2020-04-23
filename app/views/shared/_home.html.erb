@@ -6,7 +6,7 @@
       <li>Manage your teams, projects and tasks easily    </li>
       <li>Intuitive user interface makes it easy to find your way</li>
       <li>Reports to help you make informed decisions</li>
-      <li>No need to create another user account just use your Twitter,Instagram,github or facebook account </li>
+      <%# <li>No need to create another user account just use your Twitter,Instagram,github or facebook account </li> %>
     </ul>
   </div>
   <div class="col-md-5">
@@ -14,13 +14,8 @@
     <hr/>
     <%= link_to "Sign up",new_user_registration_path, class: "btn btn-primary" %>
     <p></p>
-    <h5> Select a sign in method below: </h5>
-    <%= link_to('Sign in',new_user_session_path,class:"btn btn-primary m-2") %>
-    <%= link_to('LinkedIn',new_user_session_path,class:"btn btn-primary m-2") %>
-    <%= link_to('Instagram',new_user_session_path,class:"btn btn-primary m-2") %>
-    <br/>
-    <%= link_to('Twitter',new_user_session_path,class:"btn btn-primary m-2") %>
-    <%= link_to('Github',new_user_session_path,class:"btn btn-primary m-2") %>
-    <%= link_to('Facebook',new_user_session_path,class:"btn btn-primary m-2") %>
+    <h5> Sign in if you already have an account </h5>
+    <hr/>
+    <%= link_to "Sign in",new_user_session_path, class: "btn btn-primary" %>
   </div>
 </div>
