@@ -6,6 +6,7 @@
       <th>Name</th>
       <th>Description</th>
       <th>Status</th>
+      <th>Activity</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,7 +16,8 @@
       <tr>
         <td><%= project.name %></td>
         <td><%= project.description %></td>
-        <td><%= project.status %></td>
+        <td><%= project_status(project) %></td>
+        <td><%= project_activity(project) %></td>
         <td><%= link_to 'Show', team_project_path(params[:team_id],project),class:"btn btn-primary btn-sm" %></td>
         <td><%= link_to 'Edit', edit_team_project_path(params[:team_id],project), class:"btn btn-primary btn-sm" %></td>
         <td><%= link_to 'Destroy', team_project_path(params[:team_id],project), method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger btn-sm" %></td>
