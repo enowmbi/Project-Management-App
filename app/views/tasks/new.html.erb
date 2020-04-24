@@ -28,13 +28,13 @@
     <div class="col-md-6">
       <div class="form-group">
         <%= form.label :priority %>
-        <%= form.select(:priority,ApplicationHelper::TASK_PRIORITIES.map{|s|[s]},{},{class:"form-control"}) %>
+        <%= form.select(:priority,TasksHelper::TASK_PRIORITIES.map{|s|[s]},{},{class:"form-control"}) %>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <%= form.label :status %>
-        <%= form.select(:status,ApplicationHelper::TASK_STATUS.map{|s|[s]},{},{class:"form-control"}) %>
+        <%= form.check_box :complete  %>
       </div>
     </div>
     <p></p>
