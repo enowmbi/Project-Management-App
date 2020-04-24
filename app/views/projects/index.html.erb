@@ -20,7 +20,7 @@
         <td><%= project_activity(project) %></td>
         <td><%= link_to 'Show', team_project_path(params[:team_id],project),class:"btn btn-primary btn-sm" %></td>
         <td><%= link_to 'Edit', edit_team_project_path(params[:team_id],project), class:"btn btn-primary btn-sm" %></td>
-        <td><%= link_to 'Destroy', team_project_path(params[:team_id],project), method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger btn-sm" %></td>
+        <td><%= link_to 'Destroy', team_project_path(params[:team_id],project), method: :delete, data: { confirm: "Are you sure you want to delete this project (#{project.name})?" },class:"btn btn-danger btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
