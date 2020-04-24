@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_24_035948) do
+ActiveRecord::Schema.define(version: 2020_04_24_063404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 2020_04_24_035948) do
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "team_id", null: false
@@ -75,6 +74,7 @@ ActiveRecord::Schema.define(version: 2020_04_24_035948) do
     t.integer "tasks_count", default: 0, null: false
     t.string "slug"
     t.boolean "active", default: true
+    t.boolean "complete", default: false
     t.index ["slug"], name: "index_projects_on_slug", unique: true
     t.index ["team_id"], name: "index_projects_on_team_id"
   end
