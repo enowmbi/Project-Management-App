@@ -7,7 +7,6 @@ class Project < ApplicationRecord
   validates :name, presence: true
   validates :name, uniqueness: true
   validates :description, presence: true
-  validates :status, presence: true
 
   default_scope ->{order(created_at: :desc)}
 
