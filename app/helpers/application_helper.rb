@@ -12,7 +12,7 @@ module ApplicationHelper
     email_hash = Digest::MD5.hexdigest(user.email.strip.downcase) 
     gravatar_url = "https://s.gravatar.com/avatar/#{email_hash}?s=#{size}" 
     gravatar_to_display = image_exists?(gravatar_url) ? gravatar_url : DEFAULT_GRAVATAR
-    image_tag(gravatar_to_display,class:'mx-0',size: size, alt: user.name)
+    image_tag(gravatar_to_display, size: size, alt: user.name)
   end
 
   private
