@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = current_user.teams
+    @teams = current_user.teams.where(active: true)
   end
 
   # GET /teams/1
@@ -69,6 +69,6 @@ class TeamsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def team_params
-    params.require(:team).permit(:name )
+    params.require(:team).permit(:name, :active)
   end
 end
