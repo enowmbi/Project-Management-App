@@ -13,13 +13,6 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  def gravatar_url
-    stripped_email = self.email.strip
-    downcased_email = stripped_email.downcase
-    email_hash = Digest::MD5.hexdigest(downcased_email)
-    "http://gravatar.com/avatar/#{email_hash}"
-  end
-
   protected
   def password_required?
     confirmed? ? super : false
