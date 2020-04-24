@@ -1,11 +1,11 @@
 <div class="row">
   <% team.users.each do |user| %>
-    <div class="col-md-4 border border-secondary">
+    <div class="col-md-6 border border-primary">
       <div class="row">
-        <div class="col-md-2">
-          <%= gravatar_image_tag(user.email,size:'48x48',class:'img-rounded',gravatar: {default: 'localhost:3000/default_gravatar.jpeg'}) %>
+        <div class="col-md-3">
+          <%= user_gravatar(user,58) %>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
           <h6><strong><%=user.name %></h6></strong>
           <h6><%=user.email %></h6>
           <h6><%= user.created_at.strftime("%b %d,%Y") %></h6>
