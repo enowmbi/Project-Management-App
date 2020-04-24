@@ -3,10 +3,10 @@
 <div class="col-md-7">
 <h6>Team Name:</h6>
 <h3><strong><%= @team.name %></strong></h3>   
-<strong>Activity: </strong><%= @team.active? ? "Active   ":"Inactive    " %>
+<strong>Activity: </strong><%= "#{team_activity(@team)       }" %>
 &nbsp;&nbsp;&nbsp;
 <strong>Created by :</strong>
-<span class="h6"><%= display_team_owner(@team) %></span>
+<span class="h6"><%= team_owner(@team) %></span>
 <p><%= link_to('Invite New Members to Join Team',new_user_registration_path,class:'btn btn-primary btn-sm pull-right') %></p>
 <hr/>
 <h5>Team Members <span class="badge badge-pill badge-primary"><%= @team.users.count %></span><h5/>
