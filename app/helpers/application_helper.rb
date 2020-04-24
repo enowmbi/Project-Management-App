@@ -1,5 +1,5 @@
 module ApplicationHelper
-  TASK_STATUS = ['Incomplete','Complete']
-  TASK_PRIORITIES = ['High','Medium','Low']
-  PROJECT_STATUS = ['Incomplete','Complete']
+  def task_status(task)
+     task.complete? ? 'Complete': 'Incomplete'
+  end
 end
