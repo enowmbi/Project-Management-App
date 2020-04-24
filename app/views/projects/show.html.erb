@@ -1,13 +1,17 @@
 <h5><strong> Project Details </strong></h5>
 <hr/>
 <div class= "row">
-  <div class="col-md-9">
+  <div class="col-md-6">
     <strong>Name:</strong>
     <%= @project.name %>
   </div>
   <div class="col-md-3">
+    <strong>Activity:</strong>
+    <%= @project.active? ? 'Active' : 'Incomplete' %>
+  </div>
+  <div class="col-md-3">
     <strong>Status:</strong>
-    <%= @project.status %>
+    <%= @project.complete? ? 'Complete' : 'Incomplete' %>
   </div>
 </div>
 <div class="row">
@@ -47,7 +51,7 @@
               <td><%= task.title %></td>
               <td><%= task.description %></td>
               <td><%= task.priority %></td>
-              <td><%= task.status %></td>
+              <td><%= task_status(task) %></td>
               <td><%= link_to 'Show', team_project_task_path(params[:team_id],params[:id],task),class:"btn btn-primary btn-sm" %></td>
               <td><%= link_to 'Edit', edit_team_project_task_path(params[:team_id],params[:id],task),class:"btn btn-primary btn-sm" %></td>
               <td><%= link_to 'Destroy', team_project_task_path(params[:team_id],params[:id],task), method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger btn-sm" %></td>
