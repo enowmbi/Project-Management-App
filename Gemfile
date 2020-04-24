@@ -45,7 +45,7 @@ gem 'travis'
 gem 'coveralls', require: false
 
 #Use gravatar_image_tag to get images online
-gem 'gravatar_image_tag'
+# gem 'gravatar_image_tag'
 
 gem 'mailcatcher'
 gem 'friendly_id'
