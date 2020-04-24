@@ -2,10 +2,10 @@
   <% team.users.each do |user| %>
     <div class="col-md-6 border border-primary">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2 m-1">
           <%= user_gravatar(user,58) %>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9 mx-1">
           <h6><strong><%=user.name %></h6></strong>
           <h6><%=user.email %></h6>
           <h6><%= user.created_at.strftime("%b %d,%Y") %></h6>
