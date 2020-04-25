@@ -1,36 +1,41 @@
 <div>
-<div class="row my-2">
-<div class="col-md-7">
-<h6>Team Name:</h6>
-<h3><strong><%= @team.name %></strong></h3>   
-<strong>Activity: </strong><%= "#{team_activity(@team)       }" %>
-&nbsp;&nbsp;&nbsp;
-<strong>Created by :</strong>
-<span class="h6"><%= team_owner(@team) %></span>
-<p><%= link_to('Invite New Members to Join Team',new_user_registration_path,class:'btn btn-primary btn-sm pull-right') %></p>
-<hr/>
-<h5>Team Members <span class="badge badge-pill badge-primary"><%= @team.users.count %></span><h5/>
-<%= render "/shared/team_members", team: @team %>
-</div>
-<div class="col-md-5 my-4 border-left border-primary">
-<h5><%= "#{@team.name} Projects" %></h5>
-<% team_projects_count = @team.projects.count %>
-<h5><strong>Active Projects</strong> <span class=" h6 badge badge-primary badge-pill"><%= team_projects_count %></span> </h5>
-<p><%= link_to('Add New Project to Team',new_team_project_path(@team),class:"btn btn-primary btn-sm pull-right") %><p>
-<hr/>
-<% if team_projects_count > 0 %>
-       <%= render "/shared/team_projects",team: @team %>
-     <% else %>
-       <p>No active projects yet<p>
-     <% end %>
-</div>
-</div>
+  <div class="row my-2">
+    <div class="col-md-7">
+      <h6>Team Name:</h6>
+      <h3><strong><%= @team.name %></strong></h3>   
+      <strong>Activity: </strong><%= "#{team_activity(@team)       }" %>
+    &nbsp;&nbsp;&nbsp;
+    <strong>Created by :</strong>
+    <span class="h6"><%= team_owner(@team) %></span>
+    <%# <p><%= link_to('Invite New Members to Join Team',new_user_registration_path,class:'btn btn-primary btn-sm pull-right') %1></p> %>
+    <p>
+      <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#exampleModal">
+        Invite New Members to Join Team
+      </button></p>
+      <hr/>
+      <h5>Team Members <span class="badge badge-pill badge-primary"><%= @team.users.count %></span><h5/>
+          <%= render "/shared/team_members", team: @team %>
+    </div>
+    <div class="col-md-5 my-4 border-left border-primary">
+      <h5><%= "#{@team.name} Projects" %></h5>
+      <% team_projects_count = @team.projects.count %>
+      <h5><strong>Active Projects</strong> <span class=" h6 badge badge-primary badge-pill"><%= team_projects_count %></span> </h5>
+      <p><%= link_to('Add New Project to Team',new_team_project_path(@team),class:"btn btn-primary btn-sm pull-right") %><p>
+          <hr/>
+          <% if team_projects_count > 0 %>
+            <%= render "/shared/team_projects",team: @team %>
+          <% else %>
+            <p>No active projects yet<p>
+              <% end %>
+    </div>
+  </div>
 </div>
 
 <%= link_to 'Edit', edit_team_path(@team), class: "btn btn-warning btn-sm" %> |
 <%= link_to 'Back', teams_path,class: "btn btn-secondary btn-sm" %>
 
 
+<%= form_with(model: @user) do %>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -59,3 +64,4 @@
     </div>
   </div>
 </div>
+<% end %>
