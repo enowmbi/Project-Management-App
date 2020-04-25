@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-before_action :configure_permitted_parameters,if: :devise_controller?
+  before_action :configure_permitted_parameters,if: :devise_controller?
 
   protected
   def configure_permitted_parameters
@@ -10,10 +10,13 @@ before_action :configure_permitted_parameters,if: :devise_controller?
     devise_parameter_sanitizer.permit(:account_update,keys: [:name])
     devise_parameter_sanitizer.permit(:account_update,keys: [:phone])
     devise_parameter_sanitizer.permit(:account_update,keys: [:is_admin])
+
+    devise_parameter_sanitizer.permit(:invite,keys: [:name])
+    # devise_parameter_sanitizer.permit(:accept_invitation,keys: [:name])
   end
 
   def after_invite_path_for(resource)
-     teams_show_path(resource)
+    teams_show_path(resource)
   end
 
 end
