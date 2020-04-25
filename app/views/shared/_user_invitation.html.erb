@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-6 border-secondary border-right">
+    <h5><strong>Invite users</strong></h5>
+    <hr/>
+    Invite users to create an account and join this team.Each user will be sent a confirmation email in which they can supply their own unique password.
+    <div>
+      <%= form_for(User.new,url: user_invitation_path) do |form| %>
+        <div class="form-group ">
+          <strong> <%= form.label :name %></strong>
+          <%= form.text_field :name,class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <strong><%= form.label :email %></strong>
+          <%= form.email_field :email,class: "form-control" %>
+        </div>
+        <div class="action">
+          <%= form.button "Invite User",class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h5><strong>Invited Team Members </strong><span class="badge badge-primary badge-pill"><%= 3 %></span></h5>
+    <table class="table table-responsive">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @invited_users.each do |invitee| %>
+          <tr>
+            <td><%= invitee.name %></td>
+            <td><%= invitee.email %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </table>
+  </div>
+</div>
+
