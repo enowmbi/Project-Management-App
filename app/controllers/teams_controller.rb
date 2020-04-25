@@ -10,6 +10,7 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+    @invited_users = [] #:TODO Write a script that returns all users belonging to a team even those pending should be an outer join 
   end
 
   # GET /teams/new
