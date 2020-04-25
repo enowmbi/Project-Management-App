@@ -7,7 +7,6 @@
     &nbsp;&nbsp;&nbsp;
     <strong>Created by :</strong>
     <span class="h6"><%= team_owner(@team) %></span>
-    <%# <p><%= link_to('Invite New Members to Join Team',new_user_registration_path,class:'btn btn-primary btn-sm pull-right') %1></p> %>
     <p>
       <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#exampleModal">
         Invite New Members to Join Team
@@ -30,38 +29,13 @@
     </div>
   </div>
 </div>
+<p class="text-center">
+<%= link_to 'Edit Team', edit_team_path(@team), class: "btn btn-warning btn-sm" %> |
+<%= link_to 'View All Teams', teams_path,class: "btn btn-secondary btn-sm" %>
+</p>
+<p>
+</p>
+<hr/>
 
-<%= link_to 'Edit', edit_team_path(@team), class: "btn btn-warning btn-sm" %> |
-<%= link_to 'Back', teams_path,class: "btn btn-secondary btn-sm" %>
+<%= render "/shared/user_invitation" if @team.active?%>
 
-
-<%= form_with(model: @user) do %>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
-      </div>
-    </div>
-  </div>
-</div>
-<% end %>
