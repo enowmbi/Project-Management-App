@@ -11,4 +11,9 @@ before_action :configure_permitted_parameters,if: :devise_controller?
     devise_parameter_sanitizer.permit(:account_update,keys: [:phone])
     devise_parameter_sanitizer.permit(:account_update,keys: [:is_admin])
   end
+
+  def after_invite_path_for(resource)
+     teams_show_path(resource)
+  end
+
 end
