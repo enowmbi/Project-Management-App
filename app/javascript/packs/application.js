@@ -22,7 +22,8 @@ require("channels")
 import "bootstrap"
 import "jquery"
 import "popper.js"
-
+global.toastr = require("toastr")
 
 require("trix")
 require("@rails/actiontext")
+
