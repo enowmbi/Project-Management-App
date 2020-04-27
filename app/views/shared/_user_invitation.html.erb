@@ -16,6 +16,10 @@
         <div class="action">
           <%= form.button "Invite User",class: "btn btn-success" %>
         </div>
+
+        <div>
+          <%= hidden_field_tag(:team_id, @team.id) %>
+        </div>
       <% end %>
     </div>
   </div>
