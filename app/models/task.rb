@@ -6,7 +6,6 @@ class Task < ApplicationRecord
 
   validates :title, presence: true
   validates :title, uniqueness: {scope: :project_id}
-  validates :description, presence: true
   validates :priority, presence: true
 
   extend FriendlyId
