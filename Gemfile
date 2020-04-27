@@ -44,10 +44,6 @@ gem 'devise-bootstrap-views', '~> 1.0'
 gem 'travis'
 gem 'coveralls', require: false
 
-#Use gravatar_image_tag to get images online
-# gem 'gravatar_image_tag'
-
-gem 'mailcatcher'
 gem 'friendly_id'
 gem 'devise_invitable'
 
@@ -64,6 +60,7 @@ group :development, :test do
   #Add spec_writer
   gem 'spec_writer'
 
+  gem 'letter_opener'
 end
 
 group :development do
