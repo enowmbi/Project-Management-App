@@ -15,8 +15,4 @@ class ApplicationController < ActionController::Base
     # devise_parameter_sanitizer.permit(:accept_invitation,keys: [:name])
   end
 
-  def after_invite_path_for(resource)
-    team_path(resource)
-  end
-
 end
