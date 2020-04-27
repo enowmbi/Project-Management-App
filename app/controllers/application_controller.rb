@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_invite_path_for(resource)
-    teams_show_path(resource)
+    team_path(resource)
   end
 
 end
