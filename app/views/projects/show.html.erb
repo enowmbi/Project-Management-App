@@ -51,7 +51,7 @@
               <td><%= task.title %></td>
               <td><%= task.description %></td>
               <td><%= task.priority %></td>
-              <td><%= task_status(task) %></td>
+              <td><%= status_tag(task_status(task)) %></td>
               <td><%= link_to 'Show', team_project_task_path(params[:team_id],params[:id],task),class:"btn btn-primary btn-sm" %></td>
               <td><%= link_to 'Edit', edit_team_project_task_path(params[:team_id],params[:id],task),class:"btn btn-primary btn-sm" %></td>
               <td><%= link_to 'Destroy', team_project_task_path(params[:team_id],params[:id],task), method: :delete, data: { confirm: "Are you sure this task (#{task.title}) ?" },class:"btn btn-danger btn-sm" %></td>
