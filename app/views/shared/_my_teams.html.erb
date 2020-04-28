@@ -5,10 +5,11 @@
     <h6 class="badge badge-secondary"><%= pluralize(team_users_count, 'Active Member') %></h6>  
     </br>
     <% active_members = [] %>
-    <% team.users.each do |user| %>
-      <% active_members << user.name %>
-      <%= active_members.join(', ') %>
+    <% team_members = active_members(team)  %>
+    <% team_members.each do |member|%>
+      <% active_members << member[0] %>
     <% end %>
+    <%= active_members.join(', ') %>
   </div>
   <hr/>
 <% end %>
