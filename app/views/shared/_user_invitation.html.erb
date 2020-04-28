@@ -1,8 +1,8 @@
 <div class="row">
-  <div class="col-md-6 border-secondary border-right">
+  <div class="col-md-4 border-secondary border-right">
     <h5><strong>Invite users</strong></h5>
     <hr/>
-    Invite users to create an account and join this team.Each user will be sent a confirmation email in which they can supply their own unique password.
+    Invite users to join this team.Each user will be sent an email with instructions to follow.
     <div>
       <%= form_for(User.new,url: user_invitation_path) do |form| %>
         <div class="form-group ">
@@ -23,7 +23,7 @@
       <% end %>
     </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-8">
     <h5><strong>Invited Team Members </strong><span class="badge badge-primary badge-pill"><%= 3 %></span></h5>
     <table class="table table-responsive">
       <thead>
