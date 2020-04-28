@@ -30,15 +30,15 @@
         <tr>
           <th>Name</th>
           <th>Email</th>
-          <th>Invitation Status</th>
+          <th>Date of Invitation</th>
         </tr>
       </thead>
       <tbody>
-        <% @invited_users.each do |invitee| %>
+        <% team_members_pending_acceptance(@team).each do |invitee| %>
           <tr>
-            <td><%= invitee.name %></td>
-            <td><%= invitee.email %></td>
-            <td><%= "#:TODO display invitation status here" %></td>
+            <td><%= invitee[0] %></td>
+            <td><%= invitee[1] %></td>
+            <td><%= invitee[3] %></td>
           </tr>
         <% end %>
       </tbody>
