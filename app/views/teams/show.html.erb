@@ -14,7 +14,7 @@
       </p>
     <% end %>
     <hr/>
-    <h5>Team Members <span class="badge badge-pill badge-primary"><%= @team.users.count %></span><h5/>
+    <h5>Team Members <span class="badge badge-pill badge-primary"><%= active_members(@team).size %></span><h5/>
         <%= render "/shared/team_members", team: @team %>
     </div>
     <div class="col-md-5 my-4 border-left border-primary">
