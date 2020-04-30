@@ -4,7 +4,13 @@ Rails.application.routes.draw do
   devise_for :users ,controllers: {confirmations: 'confirmations', invitations: 'invitations'}
   resources :teams do
     resources :projects do 
-      resources :tasks
+      resources :tasks do 
+        collection do 
+          get 'sort_by_title_asc'
+          get 'sort_by_title_desc'
+        end
+      end
+
     end
   end
   # resources :memberships
