@@ -3,6 +3,13 @@ Rails.application.routes.draw do
   resources :assignments
   devise_for :users ,controllers: {confirmations: 'confirmations', invitations: 'invitations'}
   resources :teams do
+    collection do 
+      sortables = %w(name activity owner)
+      sortables.each do |sortable|
+        get "sort_by_#{sortable}_asc"
+        get "sort_by_#{sortable}_desc"
+      end
+    end
     resources :projects do 
       resources :tasks do 
         collection do 
@@ -10,7 +17,7 @@ Rails.application.routes.draw do
           sortables.each do |sortable|
             get "sort_by_#{sortable}_asc"
             get "sort_by_#{sortable}_desc"
-            end
+          end
         end
       end
 
