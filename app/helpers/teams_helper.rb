@@ -15,4 +15,17 @@ module TeamsHelper
   def team_members_pending_acceptance(team)
     User.joins([:teams]).where("team_id = ? AND invitation_token is NOT NULL AND invitation_accepted_at is NULL", team.id).group('users.id',:owner,:team_id,:invitation_accepted_at).order('invitation_sent_at DESC').pluck(:name,:email,:owner,:invitation_sent_at)
   end
+
+  sortables = %w(name activity owner)
+
+  sortables.each do |sortable|
+    define_method "sort_by_#{sortable}_asc" do 
+      link_to("<i class='fas fa-sort-up'></i>".html_safe,"/teams/sort_by_#{sortable}_asc".html_safe)
+    end
+
+    define_method "sort_by_#{sortable}_desc" do 
+      link_to("<i class='fas fa-sort-down'></i>".html_safe,"/teams/sort_by_#{sortable}_desc".html_safe)
+    end
+  end
+
 end
