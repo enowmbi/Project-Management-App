@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = current_user.teams
+    @teams = current_user.teams.most_recent_first
   end
 
   # GET /teams/1
@@ -59,6 +59,20 @@ class TeamsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to teams_url, notice: 'Team was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  sortables = %w(name activity owner)
+
+  sortables.each do |sortable|
+    define_method "sort_by_#{sortable}_asc" do 
+      @teams =Team.send("ascending_#{sortable}") 
+      render action: :index
+    end
+
+    define_method "sort_by_#{sortable}_desc" do 
+      @teams =Team.send("descending_#{sortable}") 
+      render action: :index
     end
   end
 
