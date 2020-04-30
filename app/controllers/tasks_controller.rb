@@ -62,34 +62,18 @@ class TasksController < ApplicationController
     end
   end
 
-  def sort_by_title_asc
-    @tasks = Task.all_tasks(@project).ascending_title
-    render action: :index
-  end
+  sortables = %w(title priority status)
 
-  def sort_by_title_desc
-    @tasks = Task.all_tasks(@project).descending_title
-    render action: :index
-  end
+  sortables.each do |sortable|
+    define_method "sort_by_#{sortable}_asc" do 
+      @tasks = Task.all_tasks(@project).send("ascending_#{sortable}")
+      render action: :index
+    end
 
-  def sort_by_priority_asc
-    @tasks = Task.all_tasks(@project).ascending_priority
-    render action: :index
-  end
-
-  def sort_by_priority_desc
-    @tasks = Task.all_tasks(@project).descending_priority
-    render action: :index
-  end
-
-  def sort_by_status_asc
-    @tasks = Task.all_tasks(@project).ascending_status
-    render action: :index
-  end
-
-  def sort_by_status_desc
-    @tasks = Task.all_tasks(@project).descending_status
-    render action: :index
+    define_method "sort_by_#{sortable}_desc" do 
+      @tasks = Task.all_tasks(@project).send("descending_#{sortable}")
+      render action: :index
+    end
   end
 
   private
