@@ -8,6 +8,10 @@ Rails.application.routes.draw do
         collection do 
           get 'sort_by_title_asc'
           get 'sort_by_title_desc'
+          get 'sort_by_priority_asc'
+          get 'sort_by_priority_desc'
+          get 'sort_by_status_asc'
+          get 'sort_by_status_desc'
         end
       end
 
