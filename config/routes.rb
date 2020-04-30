@@ -6,12 +6,11 @@ Rails.application.routes.draw do
     resources :projects do 
       resources :tasks do 
         collection do 
-          get 'sort_by_title_asc'
-          get 'sort_by_title_desc'
-          get 'sort_by_priority_asc'
-          get 'sort_by_priority_desc'
-          get 'sort_by_status_asc'
-          get 'sort_by_status_desc'
+          sortables = %w(title priority status)
+          sortables.each do |sortable|
+            get "sort_by_#{sortable}_asc"
+            get "sort_by_#{sortable}_desc"
+            end
         end
       end
 
