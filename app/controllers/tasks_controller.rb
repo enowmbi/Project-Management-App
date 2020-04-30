@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_project, only: [:index, :new,:create,:edit, :sort_by_title_asc, :sort_by_title_desc]
+  before_action :set_project, only: [:index, :new,:create,:edit, :sort_by_title_asc, :sort_by_title_desc, :sort_by_priority_asc,:sort_by_priority_desc, :sort_by_status_asc, :sort_by_status_desc]
   before_action :set_team, only: [:new,:create,:edit]
   # GET /tasks
   # GET /tasks.json
@@ -63,12 +63,32 @@ class TasksController < ApplicationController
   end
 
   def sort_by_title_asc
-    @tasks = Task.all_tasks(@project).ascending_order
+    @tasks = Task.all_tasks(@project).ascending_title
     render action: :index
   end
 
   def sort_by_title_desc
-    @tasks = Task.all_tasks(@project).descending_order
+    @tasks = Task.all_tasks(@project).descending_title
+    render action: :index
+  end
+
+  def sort_by_priority_asc
+    @tasks = Task.all_tasks(@project).ascending_priority
+    render action: :index
+  end
+
+  def sort_by_priority_desc
+    @tasks = Task.all_tasks(@project).descending_priority
+    render action: :index
+  end
+
+  def sort_by_status_asc
+    @tasks = Task.all_tasks(@project).ascending_status
+    render action: :index
+  end
+
+  def sort_by_status_desc
+    @tasks = Task.all_tasks(@project).descending_status
     render action: :index
   end
 
