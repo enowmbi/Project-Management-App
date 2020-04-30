@@ -3,7 +3,7 @@
 <table class="table table-responsive">
   <thead>
     <tr>
-      <th>Title</th>
+      <th>Title <%= link_to("<i class='fas fa-sort-up'></i>".html_safe,sort_by_title_asc_team_project_tasks_path(params[:team_id],params[:project_id])) %><%= link_to("<i class='fa fa-sort-down'></i>".html_safe,sort_by_title_desc_team_project_tasks_path(params[:team_id],params[:project_id])) %></th>
       <th>Description</th>
       <th>Priority</th>
       <th>Complete</th>
