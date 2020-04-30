@@ -22,6 +22,7 @@ require("channels")
 import "bootstrap"
 import "jquery"
 import "popper.js"
+import "@fortawesome/fontawesome-free/js/all";
 global.toastr = require("toastr")
 
 require("trix")
