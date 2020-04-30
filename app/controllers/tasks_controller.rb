@@ -1,11 +1,11 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_project, only: [:index, :new,:create,:edit]
+  before_action :set_project, only: [:index, :new,:create,:edit, :sort_by_title_asc, :sort_by_title_desc]
   before_action :set_team, only: [:new,:create,:edit]
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.where(project_id: @project)
+    @tasks = Task.all_tasks(@project)
   end
 
   # GET /tasks/1
@@ -60,6 +60,16 @@ class TasksController < ApplicationController
       format.html { redirect_to team_project_tasks_url(params[:team_id],@task.project), notice: 'task was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def sort_by_title_asc
+    @tasks = Task.all_tasks(@project).ascending_order
+    render action: :index
+  end
+
+  def sort_by_title_desc
+    @tasks = Task.all_tasks(@project).descending_order
+    render action: :index
   end
 
   private
