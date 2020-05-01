@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users ,controllers: {confirmations: 'confirmations', invitations: 'invitations'}
   resources :teams do
     collection do 
-      sortables = %w(name activity owner)
+      sortables = %w(name active owner)
       sortables.each do |sortable|
         get "sort_by_#{sortable}_asc"
         get "sort_by_#{sortable}_desc"
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :projects do 
       resources :tasks do 
         collection do 
-          sortables = %w(title priority status)
+          sortables = %w(title priority complete)
           sortables.each do |sortable|
             get "sort_by_#{sortable}_asc"
             get "sort_by_#{sortable}_desc"
