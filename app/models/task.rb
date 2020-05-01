@@ -14,10 +14,11 @@ class Task < ApplicationRecord
   has_rich_text :description
 
   scope :all_tasks, ->(project){where(project_id: project.id)}
-  scope :ascending_title, ->{order(title: :asc)}
-  scope :descending_title, ->{order(title: :desc)}
-  scope :ascending_priority, ->{order(priority: :asc)}
-  scope :descending_priority, ->{order(priority: :desc)}
-  scope :ascending_status, ->{order(complete: :asc)}
-  scope :descending_status, ->{order(complete: :desc)}
+  
+  sortables = %w(title priority complete)
+
+  sortables.each do |sortable|
+     scope "ascending_#{sortable}".to_sym, ->{order("#{sortable} asc")}
+     scope "descending_#{sortable}".to_sym, ->{order("#{sortable} desc")}
+  end
 end
