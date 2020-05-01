@@ -3,6 +3,7 @@
     <tr>
       <th> Title <%= sort_by_task_title_asc(team_id,project_id)%><%= sort_by_task_title_desc(team_id,project_id)%> </th>
       <th> Priority <%= sort_by_task_priority_asc(team_id,project_id)%><%= sort_by_task_priority_desc(team_id,project_id)%> </th>
+      <th> Due Date <%= sort_by_task_due_date_asc(team_id,project_id)%><%= sort_by_task_due_date_desc(team_id,project_id)%> </th>
       <th> Complete <%= sort_by_task_complete_asc(team_id,project_id)%><%= sort_by_task_complete_desc(team_id,project_id)%> </th>
       <th colspan="3"></th>
     </tr>
@@ -13,6 +14,7 @@
       <tr>
         <td><%= task.title %></td>
         <td><%= task.priority %></td>
+        <td><%= task.due_date %></td>
         <td><%= status_tag(task.complete) %></td>
         <td><%= link_to 'Show', team_project_task_path(team_id,project_id,task),class:"btn btn-primary btn-sm" %></td>
         <td><%= link_to 'Edit', edit_team_project_task_path(team_id,project_id,task),class:"btn btn-primary btn-sm" %></td>

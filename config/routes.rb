@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       end
       resources :tasks do 
         collection do 
-          sortables = %w(title priority complete)
+          sortables = %w(title priority complete due_date)
           sortables.each do |sortable|
             get "sort_by_#{sortable}_asc"
             get "sort_by_#{sortable}_desc"

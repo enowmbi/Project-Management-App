@@ -17,7 +17,7 @@ class Task < ApplicationRecord
 
   scope :most_recent_first, ->{order(created_at: :desc)}
   
-  sortables = %w(title priority complete)
+  sortables = %w(title priority complete due_date)
 
   sortables.each do |sortable|
      scope "ascending_#{sortable}".to_sym, ->{order("#{sortable} asc")}

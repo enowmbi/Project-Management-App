@@ -1,7 +1,7 @@
 module TasksHelper
   TASK_PRIORITIES = ['High','Medium','Low']
 
-  sortables = %w(title priority complete)
+  sortables = %w(title priority complete due_date)
 
   sortables.each do |sortable|
     define_method "sort_by_task_#{sortable}_asc" do |team,project| 
