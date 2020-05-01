@@ -7,7 +7,15 @@ class Project < ApplicationRecord
   validates :name, presence: true
   validates :name, uniqueness: true
 
-  default_scope ->{order(created_at: :desc)}
+  scope :all_projects, ->(team){where(team_id: team.id)}
+  scope :most_recent_first, ->{order(created_at: :desc)} 
+
+  sortables = %w(name due_date active complete)
+
+  sortables.each do |sortable|
+    scope "ascending_#{sortable}".to_sym, ->{order("#{sortable} asc")}
+    scope "descending_#{sortable}".to_sym, ->{order("#{sortable} desc")}
+  end
 
   extend FriendlyId
   friendly_id :name, use: :slugged
