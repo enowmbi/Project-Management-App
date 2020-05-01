@@ -62,16 +62,16 @@ class TeamsController < ApplicationController
     end
   end
 
-  sortables = %w(name activity owner)
+  sortables = %w(name active owner)
 
   sortables.each do |sortable|
     define_method "sort_by_#{sortable}_asc" do 
-      @teams =Team.send("ascending_#{sortable}") 
+      @teams =current_user.teams.send("ascending_#{sortable}") 
       render action: :index
     end
 
     define_method "sort_by_#{sortable}_desc" do 
-      @teams =Team.send("descending_#{sortable}") 
+      @teams =current_user.teams.send("descending_#{sortable}") 
       render action: :index
     end
   end
