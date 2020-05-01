@@ -1,3 +1,4 @@
+<% team_id = params[:team_id]  %>
 <h5><strong> Project Details </strong></h5>
 <hr/>
 <div class= "row">
@@ -24,8 +25,8 @@
 </div>
 <div class="text-center">
   <hr/>
-  <%= link_to 'Edit', edit_team_project_path(params[:team_id],@project),class: "btn btn-warning" %> |
-  <%= link_to 'Back', team_projects_path(params[:team_id]),class: "btn btn-secondary" %>
+  <%= link_to 'Edit', edit_team_project_path(team_id,@project),class: "btn btn-warning" %> |
+  <%= link_to 'Back', team_projects_path(team_id),class: "btn btn-secondary" %>
   <hr/>
 </div>
 <div class="row">
@@ -33,32 +34,7 @@
     <h5><strong>Tasks</strong></h5>
     <%= link_to 'Add Task to this Project',new_team_project_task_path(params[:team_id],@project),class: "btn btn-primary btn-sm pull-right" %> 
     <% if @project.tasks_count > 0 %>
-
-      <table class="table table-responsive">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Priority</th>
-            <th>Complete</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @tasks.each do |task| %>
-            <tr>
-              <td><%= task.title %></td>
-              <td><%= task.description %></td>
-              <td><%= task.priority %></td>
-              <td><%= status_tag(task.complete) %></td>
-              <td><%= link_to 'Show', team_project_task_path(params[:team_id],params[:id],task),class:"btn btn-primary btn-sm" %></td>
-              <td><%= link_to 'Edit', edit_team_project_task_path(params[:team_id],params[:id],task),class:"btn btn-primary btn-sm" %></td>
-              <td><%= link_to 'Destroy', team_project_task_path(params[:team_id],params[:id],task), method: :delete, data: { confirm: "Are you sure this task (#{task.title}) ?" },class:"btn btn-danger btn-sm" %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <%=  render "/shared/tasks",{team_id: team_id,project_id: @project.id} %>
     <% else %>
     <hr/>
       <p>No task yet. <%= link_to('Add one',new_team_project_task_path(params[:team_id],@project)) %>
