@@ -11,6 +11,13 @@ Rails.application.routes.draw do
       end
     end
     resources :projects do 
+      collection do 
+        sortables = %w(name due_date active complete)
+        sortables.each do |sortable|
+          get "sort_by_#{sortable}_asc"
+          get "sort_by_#{sortable}_desc"
+        end
+      end
       resources :tasks do 
         collection do 
           sortables = %w(title priority complete)
