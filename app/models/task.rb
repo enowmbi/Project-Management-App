@@ -14,6 +14,8 @@ class Task < ApplicationRecord
   has_rich_text :description
 
   scope :all_tasks, ->(project){where(project_id: project.id)}
+
+  scope :most_recent_first, ->{order(created_at: :desc)}
   
   sortables = %w(title priority complete)
 
