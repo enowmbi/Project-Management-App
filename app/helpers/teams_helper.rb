@@ -19,11 +19,11 @@ module TeamsHelper
   sortables = %w(name active owner)
 
   sortables.each do |sortable|
-    define_method "sort_by_#{sortable}_asc" do 
+    define_method "sort_by_team_#{sortable}_asc" do 
       link_to("<i class='fas fa-sort-up'></i>".html_safe,"/teams/sort_by_#{sortable}_asc".html_safe)
     end
 
-    define_method "sort_by_#{sortable}_desc" do 
+    define_method "sort_by_team_#{sortable}_desc" do 
       link_to("<i class='fas fa-sort-down'></i>".html_safe,"/teams/sort_by_#{sortable}_desc".html_safe)
     end
   end
