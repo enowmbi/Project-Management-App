@@ -1,48 +1,9 @@
 <h1>New Task</h1>
 
 <%= form_for([@team,@project,@project.tasks.build]) do |form| %>
-  <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
-
-      <ul>
-        <% @task.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="form-group">
-        <%= form.label :title %>
-        <%= form.text_field :title,class:"form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= form.label :description %>
-        <%= form.rich_text_area :description,class:"form-control"%>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <%= form.label :priority %>
-        <%= form.select(:priority,TasksHelper::TASK_PRIORITIES.map{|s|[s]},{},{class:"form-control"}) %>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="checkbox">
-        <%= form.check_box :complete  %>
-        <%= form.label :Complete %>
-      </div>
-    </div>
-    <p></p>
-    <div class="text-center">
-      <%= form.submit class:"btn btn-primary" %>
-    </div>
-  </div>
-  </div>
+  <%= render "form", {form: form} %>
 <% end %>
 
-<%= link_to 'Back', team_project_tasks_path(@team,@project) %>
+<div class="container">
+  <%= link_to 'Back', team_project_tasks_path(@team,@project) %>
+</div>
