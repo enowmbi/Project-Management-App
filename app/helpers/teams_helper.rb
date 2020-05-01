@@ -16,7 +16,7 @@ module TeamsHelper
     User.joins([:teams]).where("team_id = ? AND invitation_token is NOT NULL AND invitation_accepted_at is NULL", team.id).group('users.id',:owner,:team_id,:invitation_accepted_at).order('invitation_sent_at DESC').pluck(:name,:email,:owner,:invitation_sent_at)
   end
 
-  sortables = %w(name activity owner)
+  sortables = %w(name active owner)
 
   sortables.each do |sortable|
     define_method "sort_by_#{sortable}_asc" do 
