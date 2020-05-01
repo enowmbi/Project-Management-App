@@ -1,11 +1,11 @@
 <h1>Teams</h1>
 
-<table class="table table-responsive">
+<table class="table table-responsive table-sm">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Activity</th>
-      <th>Created by</th>
+      <th>Name <%= sort_by_name_asc %><%= sort_by_name_desc %></th>
+      <th>Active <%= sort_by_active_asc %><%= sort_by_active_desc %></th>
+      <th>Owner<%= sort_by_owner_asc %><%= sort_by_owner_desc %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
