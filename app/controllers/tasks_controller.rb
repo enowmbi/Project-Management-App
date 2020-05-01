@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all_tasks(@project)
+    @tasks = Task.all_tasks(@project).most_recent_first
   end
 
   # GET /tasks/1
