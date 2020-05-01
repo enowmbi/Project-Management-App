@@ -86,9 +86,9 @@ ActiveRecord::Schema.define(version: 2020_04_28_114848) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "project_id"
-    t.date "due_date"
     t.string "slug"
     t.boolean "complete", default: false
+    t.date "due_date", default: "2020-05-01", null: false
     t.index ["project_id"], name: "index_tasks_on_project_id"
     t.index ["slug"], name: "index_tasks_on_slug", unique: true
   end
