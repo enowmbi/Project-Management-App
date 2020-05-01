@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_project, only: [:index, :new,:create,:edit, :sort_by_title_asc, :sort_by_title_desc, :sort_by_priority_asc,:sort_by_priority_desc, :sort_by_status_asc, :sort_by_status_desc]
+  before_action :set_project, only: [:index, :new,:create,:edit, :sort_by_title_asc, :sort_by_title_desc, :sort_by_priority_asc,:sort_by_priority_desc, :sort_by_complete_asc, :sort_by_complete_desc]
   before_action :set_team, only: [:new,:create,:edit]
   # GET /tasks
   # GET /tasks.json
@@ -62,7 +62,7 @@ class TasksController < ApplicationController
     end
   end
 
-  sortables = %w(title priority status)
+  sortables = %w(title priority complete)
 
   sortables.each do |sortable|
     define_method "sort_by_#{sortable}_asc" do 
