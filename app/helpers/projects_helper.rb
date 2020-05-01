@@ -7,7 +7,7 @@ module ProjectsHelper
     project.complete? ? 'Complete' : 'Incomplete'
   end
 
-  sortables = %w(name due_date active complete)
+  sortables = %w(name due_date active complete tasks_count)
 
   sortables.each do |sortable| 
     define_method "sort_by_project_#{sortable}_asc" do |team|

@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-  before_action :set_team, only: [:index, :new, :create, :edit, :sort_by_name_asc, :sort_by_name_desc, :sort_by_due_date_asc, :sort_by_due_date_desc, :sort_by_active_asc, :sort_by_active_desc, :sort_by_complete_asc, :sort_by_complete_desc]
+  before_action :set_team, only: [:index, :new, :create, :edit, :sort_by_name_asc, :sort_by_name_desc, :sort_by_due_date_asc, :sort_by_due_date_desc, :sort_by_active_asc, :sort_by_active_desc, :sort_by_complete_asc, :sort_by_complete_desc, :sort_by_tasks_count_asc, :sort_by_tasks_count_desc]
 
   # GET /projects
   # GET /projects.json
@@ -63,7 +63,7 @@ class ProjectsController < ApplicationController
     end
   end
 
-  sortables = %w(name due_date active complete )
+  sortables = %w(name due_date active complete tasks_count )
 
   sortables.each do |sortable|
     define_method "sort_by_#{sortable}_asc" do 

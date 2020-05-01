@@ -6,6 +6,7 @@
     <tr>
       <th>Name <%= sort_by_project_name_asc(team_id) %><%= sort_by_project_name_desc(team_id) %></th>
       <th>Due Date <%= sort_by_project_due_date_asc(team_id) %><%= sort_by_project_due_date_desc(team_id) %></th>
+      <th>Tasks Count <%= sort_by_project_tasks_count_asc(team_id) %><%= sort_by_project_tasks_count_desc(team_id) %></th>
       <th>Complete <%= sort_by_project_complete_asc(team_id) %><%= sort_by_project_complete_desc(team_id) %></th>
       <th>Active <%= sort_by_project_active_asc(team_id) %><%= sort_by_project_active_desc(team_id) %></th>
       <th colspan="3"></th>
@@ -17,6 +18,7 @@
       <tr>
         <td><%= project.name %></td>
         <td><%= project.due_date %></td>
+        <td class="text-center"><%= project.tasks_count %></td>
         <td><%= project_status(project) %></td>
         <td><%= project_activity(project) %></td>
         <td><%= link_to 'Show', team_project_path(team_id,project),class:"btn btn-primary btn-sm" %></td>

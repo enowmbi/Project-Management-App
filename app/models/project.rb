@@ -10,7 +10,7 @@ class Project < ApplicationRecord
   scope :all_projects, ->(team){where(team_id: team.id)}
   scope :most_recent_first, ->{order(created_at: :desc)} 
 
-  sortables = %w(name due_date active complete)
+  sortables = %w(name due_date active complete tasks_count)
 
   sortables.each do |sortable|
     scope "ascending_#{sortable}".to_sym, ->{order("#{sortable} asc")}

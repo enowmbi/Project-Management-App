@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
     resources :projects do 
       collection do 
-        sortables = %w(name due_date active complete)
+        sortables = %w(name due_date active complete tasks_count)
         sortables.each do |sortable|
           get "sort_by_#{sortable}_asc"
           get "sort_by_#{sortable}_desc"
