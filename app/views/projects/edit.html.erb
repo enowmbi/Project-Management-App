@@ -20,7 +20,7 @@
 
     <div class="form-group col-md-4">
       <%= form.label :due_date %>
-      <%= form.date_field :due_date,{value: Date.today,class:"form-control"} %>
+      <%= form.date_field :due_date,{value: @project.due_date.to_s(:db),class:"form-control"} %>
     </div>
 
   </div>
