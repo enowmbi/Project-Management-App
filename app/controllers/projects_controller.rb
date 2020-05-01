@@ -1,11 +1,11 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-  before_action :set_team, only: [:index, :new, :create, :edit]
+  before_action :set_team, only: [:index, :new, :create, :edit, :sort_by_name_asc, :sort_by_name_desc, :sort_by_due_date_asc, :sort_by_due_date_desc, :sort_by_active_asc, :sort_by_active_desc, :sort_by_complete_asc, :sort_by_complete_desc]
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.includes(:tasks).where(team_id: @team)
+    @projects = Project.all_projects(@team).includes(:tasks).most_recent_first
   end
 
   # GET /projects/1
@@ -60,6 +60,20 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to team_projects_url(params[:team_id]), notice: 'Project was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  sortables = %w(name due_date active complete )
+
+  sortables.each do |sortable|
+    define_method "sort_by_#{sortable}_asc" do 
+      @projects = Project.all_projects(@team).includes(:tasks).send("ascending_#{sortable}")
+      render action: :index
+    end
+
+    define_method "sort_by_#{sortable}_desc" do 
+      @projects = Project.all_projects(@team).includes(:tasks).send("descending_#{sortable}")
+      render action: :index
     end
   end
 
