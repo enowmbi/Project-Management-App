@@ -3,9 +3,9 @@
     <div class="col-md-7">
       <h6>Team Name:</h6>
       <h3><strong><%= @team.name %></strong></h3>   
-      <strong>Activity: </strong><%= "#{team_activity(@team)       }" %>
+      <strong>Active: </strong><%= "#{team_activity(@team)       }" %>
     &nbsp;&nbsp;&nbsp;
-    <strong>Created by :</strong>
+    <strong>Owner:</strong>
     <span class="h6"><%= team_owner(@team).name %></span>
 
     <% if (team_owner(@team).id == current_user.id) && @team.active? %>
