@@ -15,7 +15,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <%= form.label :user_id %>
-          <%= form.select(:user_id,User.all.map{|u|[u.full_name,u.id]},{},({class:"form-control"})) %>
+          <%= form.select(:user_id,User.all.map{|u|[u.name,u.id]},{},({class:"form-control"})) %>
         </div>
       </div>
       <div class="col-md-6">
