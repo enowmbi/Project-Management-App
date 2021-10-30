@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
-  before_action :set_team, only: [:index, :new, :create, :edit, :sort_by_name_asc, :sort_by_name_desc, :sort_by_due_date_asc, :sort_by_due_date_desc, :sort_by_active_asc, :sort_by_active_desc, :sort_by_complete_asc, :sort_by_complete_desc, :sort_by_tasks_count_asc, :sort_by_tasks_count_desc]
+  before_action :set_project, only: %i[show edit update destroy]
+  before_action :set_team, only: %i[index new create edit sort_by_name_asc sort_by_name_desc sort_by_due_date_asc sort_by_due_date_desc sort_by_active_asc sort_by_active_desc sort_by_complete_asc sort_by_complete_desc sort_by_tasks_count_asc sort_by_tasks_count_desc]
 
   # GET /projects
   # GET /projects.json
@@ -20,8 +20,7 @@ class ProjectsController < ApplicationController
   end
 
   # GET /projects/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /projects
   # POST /projects.json
@@ -30,7 +29,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to team_project_path(params[:team_id],@project), notice: 'Project was successfully created.' }
+        format.html { redirect_to team_project_path(params[:team_id], @project), notice: 'Project was successfully created' }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
@@ -44,7 +43,7 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to team_project_path(params[:team_id],@project), notice: 'Project was successfully updated.' }
+        format.html { redirect_to team_project_path(params[:team_id], @project), notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }
@@ -63,21 +62,22 @@ class ProjectsController < ApplicationController
     end
   end
 
-  sortables = %w(name due_date active complete tasks_count )
+  sortables = %w[name due_date active complete tasks_count]
 
   sortables.each do |sortable|
-    define_method "sort_by_#{sortable}_asc" do 
+    define_method "sort_by_#{sortable}_asc" do
       @projects = Project.all_projects(@team).includes(:tasks).send("ascending_#{sortable}")
       render action: :index
     end
 
-    define_method "sort_by_#{sortable}_desc" do 
+    define_method "sort_by_#{sortable}_desc" do
       @projects = Project.all_projects(@team).includes(:tasks).send("descending_#{sortable}")
       render action: :index
     end
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_project
     @project = Project.friendly.find(params[:id])
@@ -91,6 +91,4 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:name, :description, :due_date, :team_id)
   end
-
-
 end
